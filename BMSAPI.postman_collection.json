@@ -1296,6 +1296,485 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "crop-resource",
+			"item": [
+				{
+					"name": "GET /crop/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0166ded3-e1c4-46b5-975e-0ac2c4c69240",
+								"exec": [
+									"pm.test(\"Status code is 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check brachiaria crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"brachiaria\");",
+									"});",
+									"",
+									"pm.test(\"Check chickpea crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"chickpea\");",
+									"});",
+									"",
+									"pm.test(\"Check cowpea crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"cowpea\");",
+									"});",
+									"",
+									"pm.test(\"Check groundnut crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"groundnut\");",
+									"});",
+									"",
+									"pm.test(\"Check maize crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"maize\");",
+									"});",
+									"",
+									"pm.test(\"Check rapeseed crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"rapeseed\");",
+									"});",
+									"pm.test(\"Check rice crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"rice\");",
+									"});",
+									"pm.test(\"Check sorghum crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"sorghum\");",
+									"});",
+									"",
+									"pm.test(\"Check tomato crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"tomato\");",
+									"});",
+									"",
+									"pm.test(\"Check testdata crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"crop\"));",
+									"});",
+									"",
+									"pm.test(\"Check wheat crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"wheat\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/crop/list",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"crop",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "germplasm-list-services",
+			"item": [
+				{
+					"name": "GET /germplasmList/{cropname}/{listId} existing listId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4253f6b8-4cff-47bf-9d45-21c1461bc12b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check list ID\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.listId).to.eql(JSON.parse(pm.environment.get(\"listId\")));",
+									"});",
+									"",
+									"pm.test(\"Check list name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.listName).to.eql(\"Germplasm List 0001\");",
+									"});",
+									"",
+									"pm.test(\"Check list description\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"List with nametypes and attributes\");",
+									"});",
+									"",
+									"pm.test(\"Check list size\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.listSize).to.eql(20);",
+									"});",
+									"",
+									"pm.test(\"Check details of the first germplasm entry\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.germplasmEntries[0].gid).to.eql(21);",
+									"    pm.expect(jsonData.germplasmEntries[0].designation).to.eql(\"GP1\");",
+									"    pm.expect(jsonData.germplasmEntries[0].seedSource).to.eql(\"AA001\");",
+									"    pm.expect(jsonData.germplasmEntries[0].entryCode).to.eql(\"1\");",
+									"    pm.expect(jsonData.germplasmEntries[0].cross).to.eql(\"A1/B1\");",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/{{listId}}",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"germplasmList",
+								"{{crop}}",
+								"{{listId}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /germplasmList/{cropname}/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef0d628c-61ee-4f17-826a-ab1234039acf",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check a list id\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listId).to.eql(JSON.parse(pm.environment.get(\"listId\")));",
+									"});",
+									"",
+									"pm.test(\"Check a list name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listName).to.eql(\"Germplasm List 0001\");",
+									"});",
+									"",
+									"pm.test(\"Check a list description\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].description).to.eql(\"List with nametypes and attributes\");",
+									"});",
+									"",
+									"pm.test(\"Check a list notes\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].notes).to.eql(\"For API tests\");",
+									"});",
+									"",
+									"pm.test(\"Check a list size\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listSize).to.eql(20);",
+									"});",
+									"",
+									"pm.test(\"Check a listDetailsUrl\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listDetailsUrl).to.eql((pm.environment.get(\"BMSurl\"))+ (\"/germplasmList/\")+(pm.environment.get(\"crop\"))+\"/\"+(pm.environment.get(\"listId\")));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/list",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"germplasmList",
+								"{{crop}}",
+								"list"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /germplasmList/{cropname}/search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc5f6389-9f54-43c4-9710-ad0c32c67240",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check a list id\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listId).to.eql(JSON.parse(pm.environment.get(\"listId\")));",
+									"});",
+									"",
+									"pm.test(\"Check a list name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listName).to.eql(\"Germplasm List 0001\");",
+									"});",
+									"",
+									"pm.test(\"Check a list description\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].description).to.eql(\"List with nametypes and attributes\");",
+									"});",
+									"",
+									"pm.test(\"Check a list notes\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].notes).to.eql(\"For API tests\");",
+									"});",
+									"",
+									"pm.test(\"Check a list size\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listSize).to.eql(20);",
+									"});",
+									"",
+									"pm.test(\"Check a listDetailsUrl\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listDetailsUrl).to.eql((pm.environment.get(\"BMSurl\"))+ (\"/germplasmList/\")+(pm.environment.get(\"crop\"))+\"/\"+(pm.environment.get(\"listId\")));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/search?q=germplasm",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"germplasmList",
+								"{{crop}}",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "germplasm"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role-resource",
+			"item": [
+				{
+					"name": "GET /roles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "917ad11e-49b1-4121-be56-b8457136cb77",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check Admin role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(1);",
+									"    pm.expect(jsonData[0].description).to.eql(\"Admin\");",
+									"});",
+									"",
+									"pm.test(\"Check Breeder role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].id).to.eql(2);",
+									"    pm.expect(jsonData[1].description).to.eql(\"Breeder\");",
+									"});",
+									"",
+									"pm.test(\"Check Readonly role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[2].id).to.eql(4);",
+									"    pm.expect(jsonData[2].description).to.eql(\"Readonly\");",
+									"});",
+									"",
+									"pm.test(\"Check SuperAdmin role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[3].id).to.eql(5);",
+									"    pm.expect(jsonData[3].description).to.eql(\"SuperAdmin\");",
+									"});",
+									"",
+									"pm.test(\"Check Technician role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[4].id).to.eql(3);",
+									"    pm.expect(jsonData[4].description).to.eql(\"Technician\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/roles",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /roles/assignable",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "917ad11e-49b1-4121-be56-b8457136cb77",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check Admin role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(1);",
+									"    pm.expect(jsonData[0].description).to.eql(\"Admin\");",
+									"});",
+									"",
+									"pm.test(\"Check Breeder role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].id).to.eql(2);",
+									"    pm.expect(jsonData[1].description).to.eql(\"Breeder\");",
+									"});",
+									"",
+									"pm.test(\"Check Readonly role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[2].id).to.eql(4);",
+									"    pm.expect(jsonData[2].description).to.eql(\"Readonly\");",
+									"});",
+									"",
+									"pm.test(\"Check Technician role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[3].id).to.eql(3);",
+									"    pm.expect(jsonData[3].description).to.eql(\"Technician\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/roles/assignable",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"roles",
+								"assignable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
