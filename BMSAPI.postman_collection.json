@@ -1031,7 +1031,7 @@
 			"name": "brapi-location-services",
 			"item": [
 				{
-					"name": "GET /{crop}/brapi/v1/locations",
+					"name": "GET /{crop}/brapi/v1/locations crop name only",
 					"event": [
 						{
 							"listen": "test",
@@ -1085,6 +1085,149 @@
 								"brapi",
 								"v1",
 								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/locations with pagination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da810de3-469b-4627-8f22-cb9ad3d22afe",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check current page\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.currentPage).to.eql(0)",
+									"});",
+									"",
+									"pm.test(\"Check pageSize\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.pageSize).to.eql(100)",
+									"});",
+									"",
+									"pm.test(\"Check total results\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.totalCount).to.eql(5069);",
+									"});",
+									"",
+									"pm.test(\"Check a country location\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[1].name).to.eql(\"Afghanistan\") &&",
+									"    pm.expect(jsonData.result.data[1].locationType).to.eql(\"Country\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/locations?page=0&pageSize=100",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"locations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/locations with location type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da810de3-469b-4627-8f22-cb9ad3d22afe",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check location type of first result item\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].locationType).to.eql(\"Breeding Location\")",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/locations?locationType=breeding location",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"locations"
+							],
+							"query": [
+								{
+									"key": "locationType",
+									"value": "breeding location"
+								}
 							]
 						}
 					},
