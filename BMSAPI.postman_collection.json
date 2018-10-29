@@ -257,7 +257,7 @@
 									"",
 									"pm.test(\"Check defaultDisplayName \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].defaultDisplayName).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.data[0].defaultDisplayName).to.eql(\"CML1\");",
 									"});",
 									"pm.test(\"Check accessionNumber \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -266,7 +266,7 @@
 									"",
 									"pm.test(\"Check germplasmName \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].germplasmName).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.data[0].germplasmName).to.eql(\"CML1\");",
 									"});",
 									"pm.test(\"Check germplasmPUI if null \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -274,7 +274,7 @@
 									"});",
 									"pm.test(\"Check pedigree\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].pedigree).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.data[0].pedigree).to.eql(\"CML1\");",
 									"});",
 									"  ",
 									"pm.test(\"Check germplasmSeedSource\", function () {",
@@ -367,7 +367,7 @@
 									"",
 									"pm.test(\"Check defaultDisplayName \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].defaultDisplayName).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.data[0].defaultDisplayName).to.eql(\"CML1\");",
 									"});",
 									"pm.test(\"Check accessionNumber \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -376,7 +376,7 @@
 									"",
 									"pm.test(\"Check germplasmName \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].germplasmName).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.data[0].germplasmName).to.eql(\"CML1\");",
 									"});",
 									"pm.test(\"Check germplasmPUI if null \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -384,7 +384,7 @@
 									"});",
 									"pm.test(\"Check pedigree\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].pedigree).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.data[0].pedigree).to.eql(\"CML1\");",
 									"});",
 									"  ",
 									"pm.test(\"Check germplasmSeedSource\", function () {",
@@ -463,7 +463,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm-search?germplasmName=ACCNO1",
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm-search?germplasmName=CML1",
 							"host": [
 								"{{BMSurl}}"
 							],
@@ -476,7 +476,7 @@
 							"query": [
 								{
 									"key": "germplasmName",
-									"value": "ACCNO1"
+									"value": "CML1"
 								}
 							]
 						}
@@ -501,7 +501,7 @@
 									"",
 									"pm.test(\"Check defaultDisplayName \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.defaultDisplayName).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.defaultDisplayName).to.eql(\"CML1\");",
 									"});",
 									"pm.test(\"Check accessionNumber \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -510,7 +510,7 @@
 									"",
 									"pm.test(\"Check germplasmName \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.germplasmName).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.germplasmName).to.eql(\"CML1\");",
 									"});",
 									"pm.test(\"Check germplasmPUI if null \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -518,7 +518,7 @@
 									"});",
 									"pm.test(\"Check pedigree\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.pedigree).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.pedigree).to.eql(\"CML1\");",
 									"});",
 									"  ",
 									"pm.test(\"Check germplasmSeedSource\", function () {",
@@ -708,7 +708,7 @@
 									"",
 									"pm.test(\"Check parent1Name \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.parent1Name).to.eql(\"ACCNO1\");",
+									"    pm.expect(jsonData.result.parent1Name).to.eql(\"CML1\");",
 									"});",
 									"pm.test(\"Check parent1Type \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -722,7 +722,7 @@
 									"",
 									"pm.test(\"Check parent2Name \", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.parent2Name).to.eql(\"ACCNO6\");",
+									"    pm.expect(jsonData.result.parent2Name).to.eql(\"CML6\");",
 									"});",
 									"pm.test(\"Check parent2Type \", function () {",
 									"    var jsonData = pm.response.json();",
@@ -1262,7 +1262,7 @@
 						"header": [
 							{
 								"key": "X-Auth-Token",
-								"value": "{{mas-dep-clo-token}}",
+								"value": "{{masterToken}}",
 								"type": "text"
 							}
 						],
