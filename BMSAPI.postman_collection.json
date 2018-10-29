@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "471af815-8596-4539-9afc-eb6ebae20076",
+		"_postman_id": "1cfabf6b-c71f-4df1-a0e5-d2a4dd97ddfa",
 		"name": "BMSAPI - local",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1174,6 +1174,63 @@
 			"name": "dataset-services",
 			"item": [
 				{
+					"name": "HEAD /crops/{crop}/{studyId}/datasets/{datasetId}/variables/observations non-existing studyID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89069dcf-9985-4e37-9a85-905ab83b7bef",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"type": "text",
+								"value": "{{masterToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{nonExistingGID}}/datasets/{{datasetId}}/variables/observations?variableIds=100162",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"crops",
+								"{{crop}}",
+								"studies",
+								"{{nonExistingGID}}",
+								"datasets",
+								"{{datasetId}}",
+								"variables",
+								"observations"
+							],
+							"query": [
+								{
+									"key": "variableIds",
+									"value": "100162"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "HEAD /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/observations",
 					"event": [
 						{
@@ -1186,7 +1243,7 @@
 									"});",
 									"",
 									"pm.test(\"X-Total-Count is correct\", function () {",
-									"    pm.response.to.be.header(\"X-Total-Count\", \"80\");",
+									"    pm.response.to.be.header(\"X-Total-Count\", \"20\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1210,7 +1267,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{datasetId}}/variables/observations?variableIds=18010",
+							"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{datasetId}}/variables/observations?variableIds={{variableId1}}",
 							"host": [
 								"{{BMSurl}}"
 							],
@@ -1227,7 +1284,7 @@
 							"query": [
 								{
 									"key": "variableIds",
-									"value": "18010"
+									"value": "{{variableId1}}"
 								}
 							]
 						}
@@ -1247,7 +1304,7 @@
 									"});",
 									"",
 									"pm.test(\"X-Total-Count is correct\", function () {",
-									"    pm.response.to.be.header(\"X-Total-Count\", \"240\");",
+									"    pm.response.to.be.header(\"X-Total-Count\", \"60\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1271,7 +1328,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{datasetId}}/variables/observations?variableIds=18000,18010,18110",
+							"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{datasetId}}/variables/observations?variableIds={{variableId1}},{{variableId2}},{{variableId3}}",
 							"host": [
 								"{{BMSurl}}"
 							],
@@ -1288,7 +1345,7 @@
 							"query": [
 								{
 									"key": "variableIds",
-									"value": "18000,18010,18110"
+									"value": "{{variableId1}},{{variableId2}},{{variableId3}}"
 								}
 							]
 						}
@@ -1453,7 +1510,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/germplasmList/{{crop}}/{{listId}}",
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/{{listId}}?",
 							"host": [
 								"{{BMSurl}}"
 							],
@@ -1533,7 +1590,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/germplasmList/{{crop}}/list",
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/list?",
 							"host": [
 								"{{BMSurl}}"
 							],
