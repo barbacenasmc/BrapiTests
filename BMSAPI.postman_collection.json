@@ -78,22 +78,23 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Check a samples call\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[5].call).to.eql(\"samples/{sampleId}\");",
-									"});",
-									"",
-									"pm.test(\"Check if format of samples call is json\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[5].datatypes[0]).to.eql(\"json\");",
-									"});",
 									"",
 									"pm.test(\"Check a study table call\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.result.data[8].call).to.eql(\"studies/{studyDbId}/table\");",
 									"});",
 									"",
-									"pm.test(\"Check if format of samples call is json\", function () {",
+									"pm.test(\"Check if format of study table call is json\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].datatypes[0]).to.eql(\"json\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of study table call is csv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].datatypes[1]).to.eql(\"tsv\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of study table call is csv\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.result.data[8].datatypes[2]).to.eql(\"csv\");",
 									"});",
@@ -129,6 +130,207 @@
 								"brapi",
 								"v1",
 								"calls"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls csv format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of samples call is csv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].datatypes[2]).to.eql(\"csv\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=csv",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "csv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls tsv format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of samples call is tsv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].datatypes[1]).to.eql(\"tsv\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=tsv",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "tsv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls json format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check if format of samples call is tsv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].datatypes[0]).to.eql(\"json\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=json",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "json"
+								}
 							]
 						}
 					},
