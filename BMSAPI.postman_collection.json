@@ -2951,6 +2951,87 @@
 				},
 				{
 					"name": "GET /{crop}/brapi/v1/trials/{trialDbId}/table valid trialDbId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66ee0321-2114-4447-af7d-1a107e9b28ab",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check trialDbId is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.trialDbId).to.eql(JSON.parse(pm.environment.get(\"studyId\")));",
+									"});",
+									"",
+									"pm.test(\"Check header rows are correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.headerRow).to.include(",
+									"        \"year\",",
+									"        \"studyDbId\",",
+									"        \"studyName\",",
+									"        \"locationDbId\",",
+									"        \"locationName\",",
+									"        \"germplasmDbId\",",
+									"        \"germplasmName\",",
+									"        \"observationUnitDbId\",",
+									"        \"plotNumber\",",
+									"        \"replicate\",",
+									"        \"blockNumber\",",
+									"        \"observationTimestamp\",",
+									"        \"entryType\",",
+									"        \"X\",",
+									"        \"Y\",",
+									"        \"obsUnitId\");",
+									"});",
+									"",
+									"pm.test(\"Check observation VariableDbIds are correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.observationVariableDbIds).to.include(",
+									"        18000,",
+									"        18010,",
+									"        18110);",
+									"});",
+									"",
+									"pm.test(\"Check observation variable names are correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.observationVariableNames).to.include(",
+									"        \"Grain_yield\",",
+									"        \"Biomas_yield\",",
+									"        \"Grain_size\");",
+									"});",
+									"",
+									"pm.test(\"Check details of first observation row are correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0]).to.include(",
+									"    \"2018\",",
+									"    \"2\",",
+									"    \"Randomized Trial 20180003 Environment Number 1\",",
+									"    \"9001\",",
+									"    \"WARDA-X\",",
+									"    \"24\",",
+									"    \"GP4\",",
+									"    \"1003\",",
+									"    \"1\",",
+									"    \"1\",",
+									"    null,",
+									"    \"UnknownTimestamp\",",
+									"    \"Check entry\",",
+									"    \"null\",",
+									"    \"null\",",
+									"    \"PKWDPivJxYgde\",",
+									"    \"4\",",
+									"    \"18\",",
+									"    \"95\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -3030,6 +3111,71 @@
 								"trials",
 								"100222",
 								"table"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "brapi-study-services",
+			"item": [
+				{
+					"name": "GET /{crop}/brapi/v1/studies using valid studyId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ad8e0de0-6b9b-4015-a23e-5d1f81200243",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response message is 'This call is not yet implemented.'\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.status.message).to.eql(\"This call is not yet implemented.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/studies?trialDbId={{studyId}}",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"studies"
+							],
+							"query": [
+								{
+									"key": "trialDbId",
+									"value": "{{studyId}}"
+								}
 							]
 						}
 					},
