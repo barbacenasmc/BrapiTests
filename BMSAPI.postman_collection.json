@@ -1573,6 +1573,218 @@
 			"name": "dataset-services",
 			"item": [
 				{
+					"name": "GET /crops/{crop}/studies/{studyId}/datasets",
+					"item": [
+						{
+							"name": "Verify response code and body when entered crop and studyId only",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e8961d00-1405-473a-ae6f-e783ae64130e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//Add other assertions here"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "{{masterToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered environment datasetTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e8961d00-1405-473a-ae6f-e783ae64130e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//Add other assertions here"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{env_datasetTypeId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets"
+									],
+									"query": [
+										{
+											"key": "datasetTypeIds",
+											"value": "{{env_datasetTypeId}}"
+										}
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered plot datasetTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e8961d00-1405-473a-ae6f-e783ae64130e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//Add other assertions here"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{plot_datasetTypeId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets"
+									],
+									"query": [
+										{
+											"key": "datasetTypeIds",
+											"value": "{{plot_datasetTypeId}}"
+										}
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered plot datasetTypeId Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e8961d00-1405-473a-ae6f-e783ae64130e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"//Add other assertions here"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{trialStudyId}}/datasets?datasetTypeIds={{means_datasetTypeId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{trialStudyId}}",
+										"datasets"
+									],
+									"query": [
+										{
+											"key": "datasetTypeIds",
+											"value": "{{means_datasetTypeId}}"
+										}
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets\n"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "HEAD /crops/{crop}/{studyId}/datasets/{datasetId}/variables/observations",
 					"item": [
 						{
@@ -2629,7 +2841,7 @@
 							"response": []
 						},
 						{
-							"name": "Verify response code and body when entered non-existing studyId Copy",
+							"name": "Verify response code and body when entered non-existing datasetId",
 							"event": [
 								{
 									"listen": "test",
