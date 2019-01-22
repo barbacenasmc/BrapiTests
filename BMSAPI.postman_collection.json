@@ -2857,7 +2857,7 @@
 							"response": []
 						},
 						{
-							"name": "Verify response code and body when entered string input to datasetId Copy",
+							"name": "Verify response code and body when entered string input to variableId",
 							"event": [
 								{
 									"listen": "test",
