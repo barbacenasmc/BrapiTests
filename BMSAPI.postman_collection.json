@@ -1,87 +1,1523 @@
 {
-	"id": "83924756-f287-4337-b144-7c6a85a63fab",
-	"name": "BMS_Environment",
-	"values": [
+	"info": {
+		"_postman_id": "6882066e-2fe4-49f1-b159-95c594947b79",
+		"name": "BMSAPI - local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"key": "masterToken",
-			"value": "admin:1544188978237:99107aa0e9d716743580b0e3e964a018",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "BMSurl",
-			"value": "http://104.197.1.222:48080/bmsapi",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "crop",
-			"value": "testdata",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "germplasmDbId",
-			"value": "21",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "nonExistingGID",
-			"value": "9999999",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "crossGID",
-			"value": "41",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "mas-dep-clo-URL",
-			"value": "http://35.197.30.79:48080/bmsapi",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-<<<<<<< HEAD
-			"key": "studyId",
-			"value": "3009",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-=======
-			"name": "dataset-services",
+			"name": "brapi-authentication-service",
 			"item": [
 				{
-					"name": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}/observations/{observationId}",
-					"item": [],
-					"_postman_isSubFolder": true
+					"name": "POST /brapi/v1/token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf9362de-e5e8-48d1-8faf-847f7d31a2da",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.unset(\"masterToken\");",
+									"pm.environment.set(\"masterToken\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"@dm1N\",\r\n  \"grant_type\": \"\",\r\n  \"client_id\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/token",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "brapi-call-services",
+			"item": [
+				{
+					"name": "GET /brapi/v1/calls no specified format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of study table call is json\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].datatypes[0]).to.eql(\"json\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of study table call is csv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].datatypes[1]).to.eql(\"tsv\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of study table call is csv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].datatypes[2]).to.eql(\"csv\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							]
+						}
+					},
+					"response": []
 				},
+				{
+					"name": "GET /brapi/v1/calls csv format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of samples call is csv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].datatypes[2]).to.eql(\"csv\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=csv",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "csv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls tsv format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of samples call is tsv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].datatypes[1]).to.eql(\"tsv\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=tsv",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "tsv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls json format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check if format of samples call is tsv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].datatypes[0]).to.eql(\"json\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=json",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "brapi-crop-services",
+			"item": [
+				{
+					"name": "GET /brapi/v1/crops",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44b811fa-c481-4363-a9fb-d3c085b6154f",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check brachiaria crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0]).to.eql(\"brachiaria\");",
+									"});",
+									"",
+									"pm.test(\"Check chickpea crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[1]).to.eql(\"chickpea\");",
+									"});",
+									"",
+									"pm.test(\"Check cowpea crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[2]).to.eql(\"cowpea\");",
+									"});",
+									"pm.test(\"Check groundnut crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[3]).to.eql(\"groundnut\");",
+									"});",
+									"pm.test(\"Check maize crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[4]).to.eql(\"maize\");",
+									"});",
+									"pm.test(\"Check rapeseed crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[5]).to.eql(\"rapeseed\");",
+									"});",
+									"pm.test(\"Check rice crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[6]).to.eql(\"rice\");",
+									"});",
+									"pm.test(\"Check sorghum crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[7]).to.eql(\"sorghum\");",
+									"});",
+									"pm.test(\"Check sorghum crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8]).to.eql(\"testdata\");",
+									"});",
+									"pm.test(\"Check tomato crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[9]).to.eql(\"tomato\");",
+									"});",
+									"pm.test(\"Check wheat crop \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[10]).to.eql(\"wheat\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/crops",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"crops"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "brapi-germplasm-services",
+			"item": [
+				{
+					"name": "GET /{crop}/brapi/v1/germplasm-search using germplasmDbId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea061ca1-b996-4538-8f1a-cdb6f9146910",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check GID \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmDbId).to.eql(\"21\");",
+									"});",
+									"",
+									"pm.test(\"Check defaultDisplayName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].defaultDisplayName).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check accessionNumber \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].accessionNumber).to.eql(\"ACCNO1\");",
+									"});",
+									"",
+									"pm.test(\"Check germplasmName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmName).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check germplasmPUI if null \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmPUI).to.eql(null);",
+									"});",
+									"pm.test(\"Check pedigree\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].pedigree).to.eql(\"CML1\");",
+									"});",
+									"  ",
+									"pm.test(\"Check germplasmSeedSource\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmSeedSource).to.eql(\"AA001\");",
+									"});",
+									"  ",
+									"pm.test(\"Check commonCropName\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].commonCropName).to.eql(\"testdata\");",
+									"});",
+									"",
+									"pm.test(\"Check instituteCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].instituteCode).to.eql(\"PROGM1\");",
+									"});",
+									"pm.test(\"Check instituteName\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].instituteName).to.eql(\"PROGM1\");",
+									"});",
+									"",
+									"pm.test(\"Check biologicalStatusOfAccessionCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].biologicalStatusOfAccessionCode).to.equal(null)",
+									"});",
+									"",
+									"pm.test(\"Check countryOfOriginCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].countryOfOriginCode).to.eql(\"ORI_COUN1\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm-search?germplasmDbId=21",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"germplasm-search"
+							],
+							"query": [
+								{
+									"key": "germplasmDbId",
+									"value": "21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/germplasm-search using germplasmName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea061ca1-b996-4538-8f1a-cdb6f9146910",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check GID \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmDbId).to.eql(\"21\");",
+									"});",
+									"",
+									"pm.test(\"Check defaultDisplayName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].defaultDisplayName).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check accessionNumber \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].accessionNumber).to.eql(\"ACCNO1\");",
+									"});",
+									"",
+									"pm.test(\"Check germplasmName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmName).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check germplasmPUI if null \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmPUI).to.eql(null);",
+									"});",
+									"pm.test(\"Check pedigree\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].pedigree).to.eql(\"CML1\");",
+									"});",
+									"  ",
+									"pm.test(\"Check germplasmSeedSource\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].germplasmSeedSource).to.eql(\"AA001\");",
+									"});",
+									"  ",
+									"pm.test(\"Check commonCropName\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].commonCropName).to.eql(\"testdata\");",
+									"});",
+									"",
+									"pm.test(\"Check instituteCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].instituteCode).to.eql(\"PROGM1\");",
+									"});",
+									"pm.test(\"Check instituteName\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].instituteName).to.eql(\"PROGM1\");",
+									"});",
+									"",
+									"pm.test(\"Check biologicalStatusOfAccessionCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].biologicalStatusOfAccessionCode).to.equal(null)",
+									"});",
+									"",
+									"pm.test(\"Check countryOfOriginCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].countryOfOriginCode).to.eql(\"ORI_COUN1\");",
+									"});",
+									"",
+									"pm.test(\"Check genus\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].genus).to.eql(\"GENUS1\");",
+									"});",
+									"",
+									"pm.test(\"Check species\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].species).to.eql(\"SPNAM1\");",
+									"});",
+									"",
+									"pm.test(\"Check speciesAuthority\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].speciesAuthority).to.eql(\"SPAUTH1\");",
+									"});",
+									"",
+									"pm.test(\"Check subtaxa\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].subtaxa).to.eql(\"SUBTAX1\");",
+									"});",
+									"",
+									"pm.test(\"Check acquisitionDate\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].acquisitionDate).to.eql(\"2018-10-25\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm-search?germplasmName=CML1",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"germplasm-search"
+							],
+							"query": [
+								{
+									"key": "germplasmName",
+									"value": "CML1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/germplasm/{germplasmDbId} existing GID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f9346a0-b501-47af-b8d6-12717eeb22f8",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check GID \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.germplasmDbId).to.eql(\"21\");",
+									"});",
+									"",
+									"pm.test(\"Check defaultDisplayName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.defaultDisplayName).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check accessionNumber \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.accessionNumber).to.eql(\"ACCNO1\");",
+									"});",
+									"",
+									"pm.test(\"Check germplasmName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.germplasmName).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check germplasmPUI if null \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.germplasmPUI).to.eql(null);",
+									"});",
+									"pm.test(\"Check pedigree\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.pedigree).to.eql(\"CML1\");",
+									"});",
+									"  ",
+									"pm.test(\"Check germplasmSeedSource\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.germplasmSeedSource).to.eql(\"AA001\");",
+									"});",
+									"  ",
+									"pm.test(\"Check commonCropName\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.commonCropName).to.eql(\"testdata\");",
+									"});",
+									"",
+									"pm.test(\"Check instituteCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.instituteCode).to.eql(\"PROGM1\");",
+									"});",
+									"pm.test(\"Check instituteName\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.instituteName).to.eql(\"PROGM1\");",
+									"});",
+									"",
+									"pm.test(\"Check biologicalStatusOfAccessionCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.biologicalStatusOfAccessionCode).to.equal(null)",
+									"});",
+									"",
+									"pm.test(\"Check countryOfOriginCode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.countryOfOriginCode).to.eql(\"ORI_COUN1\");",
+									"});",
+									"",
+									"pm.test(\"Check genus\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.genus).to.eql(\"GENUS1\");",
+									"});",
+									"",
+									"pm.test(\"Check species\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.species).to.eql(\"SPNAM1\");",
+									"});",
+									"",
+									"pm.test(\"Check speciesAuthority\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.speciesAuthority).to.eql(\"SPAUTH1\");",
+									"});",
+									"",
+									"pm.test(\"Check subtaxa\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.subtaxa).to.eql(\"SUBTAX1\");",
+									"});",
+									"",
+									"pm.test(\"Check acquisitionDate\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.acquisitionDate).to.eql(\"2018-10-25\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm/{{germplasmDbId}}",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"germplasm",
+								"{{germplasmDbId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/germplasm/{germplasmDbId} non-existing GID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a72ae4a8-dd71-4e7e-92f8-d6d0b0fb714d",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Response message is no germplasm found \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.status.message).to.eql(\"no germplasm found\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm/{{nonExistingGID}}",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"germplasm",
+								"{{nonExistingGID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/germplasm/{germplasmDbId}/pedigree",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a72ae4a8-dd71-4e7e-92f8-d6d0b0fb714d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check germplasmDbId \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.germplasmDbId).to.eql(41);",
+									"});",
+									"pm.test(\"Check defaultDisplayName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.defaultDisplayName).to.eql(\"IB1\");",
+									"});",
+									"pm.test(\"Check pedigree \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.pedigree).to.eql(\"IB1\");",
+									"});",
+									"pm.test(\"Check crossingPlan \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.crossingPlan).to.eql(\"Single cross\");",
+									"});",
+									"pm.test(\"Check crossingYear \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.crossingYear).to.eql(2018);",
+									"});",
+									"pm.test(\"Check familyCode \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.familyCode).to.equal(null);",
+									"});",
+									"pm.test(\"Check parent1DbId \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.parent1DbId).to.eql(21);",
+									"});",
+									"",
+									"pm.test(\"Check parent1Name \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.parent1Name).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check parent1Type \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.parent1Type).to.eql(\"FEMALE\");",
+									"});",
+									"",
+									"pm.test(\"Check parent2DbId \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.parent2DbId).to.eql(26);",
+									"});",
+									"",
+									"pm.test(\"Check parent2Name \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.parent2Name).to.eql(\"CML6\");",
+									"});",
+									"pm.test(\"Check parent2Type \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.parent2Type).to.eql(\"MALE\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm/{{crossGID}}/pedigree",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"germplasm",
+								"{{crossGID}}",
+								"pedigree"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/germplasm/{germplasmDbId}/pedigree non-existing GID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a72ae4a8-dd71-4e7e-92f8-d6d0b0fb714d",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Response message is no germplasm found \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.status.message).to.eql(\"no germplasm found\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm/{{nonExistingGID}}/pedigree",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"germplasm",
+								"{{nonExistingGID}}",
+								"pedigree"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "brapi-location-services",
+			"item": [
+				{
+					"name": "GET /{crop}/brapi/v1/locations crop name only",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da810de3-469b-4627-8f22-cb9ad3d22afe",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check total results\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.totalCount).to.eql(5069);",
+									"});",
+									"",
+									"pm.test(\"Check a country location\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[1].name).to.eql(\"Afghanistan\") &&",
+									"    pm.expect(jsonData.result.data[1].locationType).to.eql(\"Country\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/locations",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/locations with pagination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da810de3-469b-4627-8f22-cb9ad3d22afe",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check current page\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.currentPage).to.eql(0)",
+									"});",
+									"",
+									"pm.test(\"Check pageSize\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.pageSize).to.eql(100)",
+									"});",
+									"",
+									"pm.test(\"Check total results\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.totalCount).to.eql(5069);",
+									"});",
+									"",
+									"pm.test(\"Check a country location\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[1].name).to.eql(\"Afghanistan\") &&",
+									"    pm.expect(jsonData.result.data[1].locationType).to.eql(\"Country\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/locations?page=0&pageSize=100",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"locations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/locations with location type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da810de3-469b-4627-8f22-cb9ad3d22afe",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check location type of first result item\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].locationType).to.eql(\"Breeding Location\")",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/locations?locationType=breeding location",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"locations"
+							],
+							"query": [
+								{
+									"key": "locationType",
+									"value": "breeding location"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "brapi-program-services",
+			"item": [
+				{
+					"name": "GET /{crop}/brapi/v1/programs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8569a9e-5224-46c7-a717-f4fba4827191",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check programDbId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].programDbId).to.eql(\"c9e335d2-3057-4958-a43e-e38cf61d09ca\");",
+									"});",
+									"pm.test(\"Check programName\",function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].name).to.eql(\"API Program\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/programs",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/programs json format only",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8569a9e-5224-46c7-a717-f4fba4827191",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check programDbId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].programDbId).to.eql(\"c9e335d2-3057-4958-a43e-e38cf61d09ca\");",
+									"});",
+									"pm.test(\"Check programName\",function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].name).to.eql(\"API Program\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/programs",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/programs csv format only",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8569a9e-5224-46c7-a717-f4fba4827191",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check programDbId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].programDbId).to.eql(\"c9e335d2-3057-4958-a43e-e38cf61d09ca\");",
+									"});",
+									"pm.test(\"Check programName\",function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].name).to.eql(\"API Program\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/programs",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/programs tsv format only",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8569a9e-5224-46c7-a717-f4fba4827191",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check programDbId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].programDbId).to.eql(\"c9e335d2-3057-4958-a43e-e38cf61d09ca\");",
+									"});",
+									"pm.test(\"Check programName\",function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].name).to.eql(\"API Program\");",
+									"});",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/programs",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "study-services",
+			"item": [
+				{
+					"name": "GET /study/{cropname}/{studyId}/observations",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/bmsapi/study/{{crop}}/{{studyId}}/observations?instanceId=623",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"bmsapi",
+								"study",
+								"{{crop}}",
+								"{{studyId}}",
+								"observations"
+							],
+							"query": [
+								{
+									"key": "instanceId",
+									"value": "623"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dataset-services",
+			"item": [
 				{
 					"name": "HEAD /crops/{crop}/{studyId}/datasets/{datasetId}/variables/observations",
 					"item": [
@@ -106,9 +1542,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "HEAD",
 								"header": [
 									{
@@ -653,18 +2086,17 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{BMSUrl}}/bmsapi/crops/{{crop}}/studies/{{studyId}}/datasets/{{means_datasetId}}",
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{trialStudyId}}/datasets/{{trialMeansDatasetId}}",
 									"host": [
-										"{{BMSUrl}}"
+										"{{BMSurl}}"
 									],
 									"path": [
-										"bmsapi",
 										"crops",
 										"{{crop}}",
 										"studies",
-										"{{studyId}}",
+										"{{trialStudyId}}",
 										"datasets",
-										"{{means_datasetId}}"
+										"{{trialMeansDatasetId}}"
 									]
 								},
 								"description": "GET/{crop}/studies/{studyId}/datasets/{datasetId}"
@@ -682,10 +2114,9 @@
 											"pm.test(\"Status code is 404\", function () {",
 											"    pm.response.to.have.status(404);",
 											"});",
-											"pm.test(\"Verify returned studyId\", function () {",
+											"pm.test(\"Your test name\", function () {",
 											"    var jsonData = pm.response.json();",
-											"//    var studyId = Number(pm.environment.get(\"studyId\"));",
-											"    pm.expect(jsonData.error).to.eql(\"Not Found\");",
+											"    pm.expect(jsonData.errors[0].message).to.equal(\"Study does not exist\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -779,73 +2210,770 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables pass with associated and a non-associated variable",
-					"event": [
+					"name": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "a3cde24b-ab0a-4b78-af7a-5826abbb84c7",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.value).to.eql(\"Variable with id \"+{{nonExistingGID}} +\" is not a variable of dataset.\");",
-									"});"
+							"name": "Verify adding variable to a sub obs dataset with a numeric scale",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check returned \", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var biomasId = Number(pm.environment.get(\"study_biomass_cvterm_id\"));",
+											"    pm.expect(jsonData.termId).to.equal(biomasId);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
 								],
-								"type": "text/javascript"
-							}
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"studyAlias\": \"\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									]
+								},
+								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify adding variable to a sub obs dataset with a categorical scale",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check returned \", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var biomasId = Number(pm.environment.get(\"study_pestpressure_cvtermId\"));",
+											"    pm.expect(jsonData.termId).to.equal(biomasId);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_pestpressure_cvtermId}}\",\r\n  \"studyAlias\": \"\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableId={{study_pestpressure_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableId",
+											"value": "{{study_pestpressure_cvtermId}}"
+										}
+									]
+								},
+								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify adding variable to a sub obs dataset with a character scale",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check returned \", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var biomasId = Number(pm.environment.get(\"study_notes_cvtermId\"));",
+											"    pm.expect(jsonData.termId).to.equal(biomasId);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_notes_cvtermId}}\",\r\n  \"studyAlias\": \"\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									]
+								},
+								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
 						}
 					],
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "X-Auth-Token",
-								"type": "text",
-								"value": "{{masterToken}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{subobs_datasetId}}/variables?variableIds={{variableId1}},{{not_associated_varId}}",
-							"host": [
-								"{{BMSurl}}"
-							],
-							"path": [
-								"crops",
-								"{{crop}}",
-								"studies",
-								"{{studyId}}",
-								"datasets",
-								"{{subobs_datasetId}}",
-								"variables"
-							],
-							"query": [
-								{
-									"key": "variableIds",
-									"value": "{{variableId1}},{{not_associated_varId}}"
-								}
-							]
-						},
-						"description": "Verify if error was returned when trying to remove a variable that is not associated with a dataset"
-					},
-					"response": []
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables with valid parameters",
+					"name": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables",
+					"item": [
+						{
+							"name": "Delete an existing numeric trait from subobservation dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "{{masterToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_biomass_cvterm_id}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_biomass_cvterm_id}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an existing categorical trait from subobservation dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_pestpressure_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_pestpressure_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an existing character trait from subobservation dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_notes_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_notes_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered a variableId that is not existing in the dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Verify response message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Variable with id 8390 is not a variable of dataset or it exists with unsupported variable type.\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_notes_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_notes_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered non-existing studyId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Verify response message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{non_existing_study_id}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_notes_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{non_existing_study_id}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_notes_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered non-existing datasetId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Verify response message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Dataset does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{non_existing_dataset_id}}/variables?variableIds={{study_notes_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{non_existing_dataset_id}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_notes_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to studyId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify response message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{string_input}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_notes_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{string_input}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_notes_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to datasetId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify response message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{string_input}}/variables?variableIds={{study_notes_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{string_input}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_notes_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to datasetId Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify response message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{string_input}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{string_input}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "crop-resource",
+			"item": [
+				{
+					"name": "GET /crop/list",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "a3cde24b-ab0a-4b78-af7a-5826abbb84c7",
+								"id": "0166ded3-e1c4-46b5-975e-0ac2c4c69240",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
+									"pm.test(\"Status code is 200\", function() {",
 									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check brachiaria crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"brachiaria\");",
+									"});",
+									"",
+									"pm.test(\"Check chickpea crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"chickpea\");",
+									"});",
+									"",
+									"pm.test(\"Check cowpea crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"cowpea\");",
+									"});",
+									"",
+									"pm.test(\"Check groundnut crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"groundnut\");",
+									"});",
+									"",
+									"pm.test(\"Check maize crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"maize\");",
+									"});",
+									"",
+									"pm.test(\"Check rapeseed crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"rapeseed\");",
+									"});",
+									"pm.test(\"Check rice crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"rice\");",
+									"});",
+									"pm.test(\"Check sorghum crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"sorghum\");",
+									"});",
+									"",
+									"pm.test(\"Check tomato crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"tomato\");",
+									"});",
+									"",
+									"pm.test(\"Check testdata crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"crop\"));",
+									"});",
+									"",
+									"pm.test(\"Check wheat crop \", function() {",
+									"    pm.expect(pm.response.text()).to.include(\"wheat\");",
 									"});",
 									""
 								],
@@ -854,12 +2982,12 @@
 						}
 					],
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [
 							{
 								"key": "X-Auth-Token",
-								"type": "text",
-								"value": "{{masterToken}}"
+								"value": "{{masterToken}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -867,44 +2995,146 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{subobs_datasetId}}/variables?variableIds={{variableId1}},{{variableId2}}",
+							"raw": "{{BMSurl}}/crop/list",
 							"host": [
 								"{{BMSurl}}"
 							],
 							"path": [
-								"crops",
-								"{{crop}}",
-								"studies",
-								"{{studyId}}",
-								"datasets",
-								"{{subobs_datasetId}}",
-								"variables"
-							],
-							"query": [
-								{
-									"key": "variableIds",
-									"value": "{{variableId1}},{{variableId2}}"
-								}
+								"crop",
+								"list"
 							]
-						},
-						"description": "Verify response when deleted variable from a subobs dataset with correct parameters"
+						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "germplasm-list-services",
+			"item": [
 				{
-					"name": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables",
+					"name": "GET /germplasmList/{cropname}/{listId} existing listId",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
+								"id": "4253f6b8-4cff-47bf-9d45-21c1461bc12b",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Your test name\", function () {",
+									"",
+									"pm.test(\"Check list ID\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.termId).to.eql({{GW_DW_g200grn}});",
+									"    pm.expect(jsonData.listId).to.eql(JSON.parse(pm.environment.get(\"listId\")));",
+									"});",
+									"",
+									"pm.test(\"Check list name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.listName).to.eql(\"Germplasm List 0001\");",
+									"});",
+									"",
+									"pm.test(\"Check list description\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"List with nametypes and attributes\");",
+									"});",
+									"",
+									"pm.test(\"Check list size\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.listSize).to.eql(20);",
+									"});",
+									"",
+									"pm.test(\"Check details of the first germplasm entry\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.germplasmEntries[0].gid).to.eql(21);",
+									"    pm.expect(jsonData.germplasmEntries[0].designation).to.eql(\"GP1\");",
+									"    pm.expect(jsonData.germplasmEntries[0].seedSource).to.eql(\"AA001\");",
+									"    pm.expect(jsonData.germplasmEntries[0].entryCode).to.eql(\"1\");",
+									"    pm.expect(jsonData.germplasmEntries[0].cross).to.eql(\"A1/B1\");",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/{{listId}}?",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"germplasmList",
+								"{{crop}}",
+								"{{listId}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /germplasmList/{cropname}/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef0d628c-61ee-4f17-826a-ab1234039acf",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check a list id\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listId).to.eql(JSON.parse(pm.environment.get(\"listId\")));",
+									"});",
+									"",
+									"pm.test(\"Check a list name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listName).to.eql(\"Germplasm List 0001\");",
+									"});",
+									"",
+									"pm.test(\"Check a list description\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].description).to.eql(\"List with nametypes and attributes\");",
+									"});",
+									"",
+									"pm.test(\"Check a list notes\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].notes).to.eql(\"For API tests\");",
+									"});",
+									"",
+									"pm.test(\"Check a list size\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listSize).to.eql(20);",
+									"});",
+									"",
+									"pm.test(\"Check a listDetailsUrl\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listDetailsUrl).to.eql((pm.environment.get(\"BMSurl\"))+ (\"/germplasmList/\")+(pm.environment.get(\"crop\"))+\"/\"+(pm.environment.get(\"listId\")));",
 									"});"
 								],
 								"type": "text/javascript"
@@ -912,51 +3142,11 @@
 						}
 					],
 					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "X-Auth-Token",
-								"type": "text",
-								"value": "{{temp_token}}"
-							},
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"variableTypeId\": {{Trait_cvtermId}},\r\n  \"variableId\": {{GW_DW_g200grn}},\r\n  \"studyAlias\": \"\"\r\n}"
-						},
-						"url": {
-							"raw": "{{temp_URL}}/crops/{{temp_crop}}/studies/{{temp_studyId}}/datasets/{{temp_subobs_datasetId}}/variables",
-							"host": [
-								"{{temp_URL}}"
-							],
-							"path": [
-								"crops",
-								"{{temp_crop}}",
-								"studies",
-								"{{temp_studyId}}",
-								"datasets",
-								"{{temp_subobs_datasetId}}",
-								"variables"
-							]
-						},
-						"description": "Verify if user add variable to an existing sub-observation dataset"
-					},
-					"response": []
-				},
-				{
-					"name": "GET /crops/{cropname}/studies/{studyId}/datasets/{datasetId}/instances/{instanceId}/observationUnits/table",
-					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "X-Auth-Token",
-								"value": "{{temp_token}}",
+								"value": "{{masterToken}}",
 								"type": "text"
 							}
 						],
@@ -965,175 +3155,250 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{temp_URL}}/crops/{{temp_crop}}/studies/{{temp_studyId}}/datasets/{{temp_subobs_datasetId}}/instances/{{temp_instanceId}}/observationUnits/table",
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/list?",
 							"host": [
-								"{{temp_URL}}"
+								"{{BMSurl}}"
 							],
 							"path": [
-								"crops",
-								"{{temp_crop}}",
-								"studies",
-								"{{temp_studyId}}",
-								"datasets",
-								"{{temp_subobs_datasetId}}",
-								"instances",
-								"{{temp_instanceId}}",
-								"observationUnits",
-								"table"
+								"germplasmList",
+								"{{crop}}",
+								"list"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /germplasmList/{cropname}/search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc5f6389-9f54-43c4-9710-ad0c32c67240",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check a list id\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listId).to.eql(JSON.parse(pm.environment.get(\"listId\")));",
+									"});",
+									"",
+									"pm.test(\"Check a list name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listName).to.eql(\"Germplasm List 0001\");",
+									"});",
+									"",
+									"pm.test(\"Check a list description\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].description).to.eql(\"List with nametypes and attributes\");",
+									"});",
+									"",
+									"pm.test(\"Check a list notes\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].notes).to.eql(\"For API tests\");",
+									"});",
+									"",
+									"pm.test(\"Check a list size\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listSize).to.eql(20);",
+									"});",
+									"",
+									"pm.test(\"Check a listDetailsUrl\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].listDetailsUrl).to.eql((pm.environment.get(\"BMSurl\"))+ (\"/germplasmList/\")+(pm.environment.get(\"crop\"))+\"/\"+(pm.environment.get(\"listId\")));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/germplasmList/{{crop}}/search?q=germplasm",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"germplasmList",
+								"{{crop}}",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "germplasm"
+								}
 							]
 						}
 					},
 					"response": []
 				}
 			]
->>>>>>> UpdateDatasetServices
 		},
 		{
-			"key": "datasetId",
-			"value": "3011",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
+			"name": "role-resource",
+			"item": [
+				{
+					"name": "GET /roles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "917ad11e-49b1-4121-be56-b8457136cb77",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check Admin role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(1);",
+									"    pm.expect(jsonData[0].description).to.eql(\"Admin\");",
+									"});",
+									"",
+									"pm.test(\"Check Breeder role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].id).to.eql(2);",
+									"    pm.expect(jsonData[1].description).to.eql(\"Breeder\");",
+									"});",
+									"",
+									"pm.test(\"Check Readonly role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[2].id).to.eql(4);",
+									"    pm.expect(jsonData[2].description).to.eql(\"Readonly\");",
+									"});",
+									"",
+									"pm.test(\"Check SuperAdmin role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[3].id).to.eql(5);",
+									"    pm.expect(jsonData[3].description).to.eql(\"SuperAdmin\");",
+									"});",
+									"",
+									"pm.test(\"Check Technician role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[4].id).to.eql(3);",
+									"    pm.expect(jsonData[4].description).to.eql(\"Technician\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/roles",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /roles/assignable",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "917ad11e-49b1-4121-be56-b8457136cb77",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check Admin role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(1);",
+									"    pm.expect(jsonData[0].description).to.eql(\"Admin\");",
+									"});",
+									"",
+									"pm.test(\"Check Breeder role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].id).to.eql(2);",
+									"    pm.expect(jsonData[1].description).to.eql(\"Breeder\");",
+									"});",
+									"",
+									"pm.test(\"Check Readonly role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[2].id).to.eql(4);",
+									"    pm.expect(jsonData[2].description).to.eql(\"Readonly\");",
+									"});",
+									"",
+									"pm.test(\"Check Technician role\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[3].id).to.eql(3);",
+									"    pm.expect(jsonData[3].description).to.eql(\"Technician\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/roles/assignable",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"roles",
+								"assignable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"key": "variableId",
-			"value": "18010",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "mas-dep-clo-token",
-			"value": "admin:1540583382800:445c3a26bdb96baeeb49c486b86b6c7b",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-<<<<<<< HEAD
-			"key": "listId",
-			"value": "2",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "variableId1",
-			"value": "18010",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "variableId2",
-			"value": "18100",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "variableId3",
-			"value": "18000",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "env_datasetId",
-			"value": "",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "subobs_datasetId",
-			"value": "",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "means_datasetId",
-			"value": "",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "not_associated_varId",
-			"value": "",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "temp_URL",
-			"value": "http://104.154.71.11:48080/bmsapi",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "temp_token",
-			"value": "admin:1541662715579:c47eb1eb9b51369afe5c30f516335638",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "GW_DW_g200grn",
-			"value": "50883",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "Trait_cvtermId",
-			"value": "1808",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "temp_studyId",
-			"value": "30002",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-=======
 			"name": "ontology-method-service",
 			"item": [
 				{
@@ -1193,140 +3458,141 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "brapi-sample-services",
+			"item": [
+				{
+					"name": "Verify response code and body when entered valid sampleId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3ef6216-a539-4bc1-97c5-9901d1bb71bb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Verify returned sampleId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.sampleId).to.eql(pm.environment.get(\"study_sampleId\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/samples/{{study_sampleId}}",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"samples",
+								"{{study_sampleId}}"
+							]
+						},
+						"description": "GET /{crop}/brapi/v1/samples/{sampleId}"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify response code and body when entered invalid sampleId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3ef6216-a539-4bc1-97c5-9901d1bb71bb",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Verify returned error message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.status.message).to.eql(\"not found sample\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/samples/{{string_not_found}}",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"samples",
+								"{{string_not_found}}"
+							]
+						},
+						"description": "GET /{crop}/brapi/v1/samples/{sampleId}"
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
->>>>>>> UpdateDatasetServices
 		{
-			"key": "temp_subobs_datasetId",
-			"value": "30005",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
+			"listen": "prerequest",
+			"script": {
+				"id": "691de698-5868-4ff3-b954-83c983525579",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"key": "temp_crop",
-			"value": "maize",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "temp_instanceId",
-			"value": "2346",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "study_env_id",
-			"value": "3010",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "study_plot_datasetId",
-			"value": "3011",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "study_biomass_cvterm_id",
-			"value": "18010",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "study_weedPressure_cvterm_id",
-			"value": "18100",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "study_grainYield_cvterm_id",
-			"value": "18000",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "non_existing_dataset_id",
-			"value": "9999",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "non_existing_study_id",
-			"value": "",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "string_input",
-			"value": "asd",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "study_subobs_datasetId",
-			"value": "3017",
-			"description": {
-				"content": "",
-				"type": "text/plain"
-			},
-			"enabled": true
-		},
-		{
-			"key": "study_sampleId",
-			"value": "PKWDS2ooiNApo",
-			"description": "",
-			"enabled": true
-		},
-		{
-			"key": "string_not_found",
-			"value": "not_found",
-			"type": "text",
-			"description": "",
-			"enabled": true
-		},
-		{
-			"key": "",
-			"value": "",
-			"type": "text",
-			"description": "",
-			"enabled": true
+			"listen": "test",
+			"script": {
+				"id": "819cd631-95d2-4253-bf91-08853b56a5ca",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
-	],
-	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2018-12-07T07:56:03.944Z",
-	"_postman_exported_using": "Postman/6.5.3"
+	]
 }
