@@ -3589,22 +3589,6 @@
 								"description": "HEAD /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/observations"
 							},
 							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered valid inputs and one variableId only2",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": ""
-								},
-								"description": "HEAD /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/observations"
-							},
-							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
