@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "6882066e-2fe4-49f1-b159-95c594947b79",
-		"name": "BMSAPI - local",
+		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
