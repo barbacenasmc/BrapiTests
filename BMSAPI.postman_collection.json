@@ -1025,6 +1025,70 @@
 					"response": []
 				},
 				{
+					"name": "GET /{crop}/brapi/v1/germplasm/{germplasmDbId}/progeny",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a72ae4a8-dd71-4e7e-92f8-d6d0b0fb714d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check germplasmDbId \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.germplasmDbId).to.eql(21);",
+									"});",
+									"pm.test(\"Check defaultDisplayName \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.defaultDisplayName).to.eql(\"CML1\");",
+									"});",
+									"pm.test(\"Check progeny details \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.progeny[0].germplasmDbId).to.eql(41);",
+									"    pm.expect(jsonData.result.progeny[0].defaultDisplayName).to.eql(\"IB1\");",
+									"   pm.expect(jsonData.result.progeny[0].parentType).to.eql(\"FEMALE\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/germplasm/{{germplasmDbId}}/progeny",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"germplasm",
+								"{{germplasmDbId}}",
+								"progeny"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET /{crop}/brapi/v1/germplasm/{germplasmDbId}/pedigree non-existing GID",
 					"event": [
 						{
