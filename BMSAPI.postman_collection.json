@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2cf3e193-2def-423b-832d-935423259027",
+		"_postman_id": "867a693e-149e-4645-abb7-ba11cbe7326b",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1647,10 +1647,21 @@
 									"script": {
 										"id": "e8961d00-1405-473a-ae6f-e783ae64130e",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
+											"pm.test(\"Status code is 200\", function() {",
 											"    pm.response.to.have.status(200);",
 											"});",
-											"//Add other assertions here"
+											"pm.test(\"Check env dataset id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].datasetId).to.equal(parseInt(pm.environment.get(\"study_env_id\")));",
+											"});",
+											"pm.test(\"Check env plot dataset id\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[1].datasetId).to.eql(parseInt(pm.environment.get(\"study_plot_datasetId\")));",
+											"});",
+											"pm.test(\"Check subobs dataset id\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[2].datasetId).to.eql(parseInt(pm.environment.get(\"study_subobs_datasetId\")));",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -1694,10 +1705,17 @@
 									"script": {
 										"id": "e8961d00-1405-473a-ae6f-e783ae64130e",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
+											"pm.test(\"Status code is 200\", function() {",
 											"    pm.response.to.have.status(200);",
 											"});",
-											"//Add other assertions here"
+											"pm.test(\"Check env dataset id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].datasetId).to.equal(parseInt(pm.environment.get(\"study_env_id\")));",
+											"});",
+											"pm.test(\"Check env plot dataset id\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[1].datasetId).to.eql(parseInt(pm.environment.get(\"study_plot_datasetId\")));",
+											"});"
 										],
 										"type": "text/javascript"
 									}
