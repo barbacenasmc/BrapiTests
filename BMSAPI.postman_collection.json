@@ -6747,15 +6747,15 @@
 			"name": "brapi-study-services",
 			"item": [
 				{
-					"name": "GET /{crop}/brapi/v1/studies/{studyDbId} invalid crop name",
+					"name": "GET /{crop}/brapi/v1/studies",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "25942adc-a5fb-4b10-a8e6-8250d54ca7d6",
+								"id": "4cb2f4a6-f24b-4fd5-83a8-6f5a283f90cf",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {",
-									"    pm.response.to.have.status(500);",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -6780,16 +6780,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/{{invalidcrop}}/brapi/v1/studies/{{studyDbId}}",
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/studies/",
 							"host": [
 								"{{BMSurl}}"
 							],
 							"path": [
-								"{{invalidcrop}}",
+								"{{crop}}",
 								"brapi",
 								"v1",
 								"studies",
-								"{{studyDbId}}"
+								""
 							]
 						}
 					},
@@ -6857,22 +6857,16 @@
 					"response": []
 				},
 				{
-					"name": "GET /{crop}/brapi/v1/studies/{studyDbId}/table invalid studyDbId",
+					"name": "GET /{crop}/brapi/v1/studies/{studyDbId} invalid crop name",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "4cb2f4a6-f24b-4fd5-83a8-6f5a283f90cf",
+								"id": "25942adc-a5fb-4b10-a8e6-8250d54ca7d6",
 								"exec": [
-									"pm.test(\"Status code is 404\", function () {",
-									"    pm.response.to.have.status(404);",
-									"});",
-									"",
-									"pm.test(\"Error message is correct\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.errors[0].message).to.eql(\"studyDbId 9999 does not exist\");",
-									"});",
-									""
+									"pm.test(\"Status code is 500\", function () {",
+									"    pm.response.to.have.status(500);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -6896,17 +6890,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/studies/{{non_existing_study_id}}/table",
+							"raw": "{{BMSurl}}/{{invalidcrop}}/brapi/v1/studies/{{studyDbId}}",
 							"host": [
 								"{{BMSurl}}"
 							],
 							"path": [
-								"{{crop}}",
+								"{{invalidcrop}}",
 								"brapi",
 								"v1",
 								"studies",
-								"{{non_existing_study_id}}",
-								"table"
+								"{{studyDbId}}"
 							]
 						}
 					},
@@ -7190,6 +7183,62 @@
 									"key": "format",
 									"value": "csv"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /{crop}/brapi/v1/studies/{studyDbId}/table invalid studyDbId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4cb2f4a6-f24b-4fd5-83a8-6f5a283f90cf",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {",
+									"    pm.response.to.have.status(500);",
+									"});",
+									"",
+									"pm.test(\"Error message is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].message).to.eql(\"studyDbId 9999 does not exist\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/{{crop}}/brapi/v1/studies/{{non_existing_study_id}}/table",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"{{crop}}",
+								"brapi",
+								"v1",
+								"studies",
+								"{{non_existing_study_id}}",
+								"table"
 							]
 						}
 					},
