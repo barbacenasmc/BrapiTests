@@ -2046,7 +2046,10 @@
 											"pm.test(\"Status code is 500\", function () {",
 											"    pm.response.to.have.status(500);",
 											"});",
-											"//Add other assertions here"
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -2595,8 +2598,25 @@
 									"script": {
 										"id": "2cd5dcc0-620e-4b86-80d7-dc76cb0b9673",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
+											"pm.test(\"Status code is 200\", function() {",
 											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check instanceDbId\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].instanceDbId).to.eql(1);",
+											"});",
+											"pm.test(\"Check locationName\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].locationName).to.eql(\"Africa Rice Centre\");",
+											"});",
+											"",
+											"pm.test(\"Check locationAbbreviation\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].locationAbbreviation).to.eql(\"WARDA\");",
+											"});",
+											"pm.test(\"Check instanceNumber\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].instanceNumber).to.eql(1);",
 											"});"
 										],
 										"type": "text/javascript"
