@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "56ad6f16-7552-438d-b0cc-5aaf4649c12d",
+		"_postman_id": "8255a164-4621-435c-9a85-f0096147ad3a",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -6566,20 +6566,20 @@
 									"",
 									"pm.test(\"Check details of a trial in the list are correct\", function() {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].trialDbId).to.eql(3019);",
-									"    pm.expect(jsonData.result.data[0].trialName).to.eql(\"Locked Study Trial 20190001\");",
+									"    pm.expect(jsonData.result.data[0].trialDbId).to.eql(3028);",
+									"    pm.expect(jsonData.result.data[0].trialName).to.eql(\"Study with no phenotype count\");",
 									"    pm.expect(jsonData.result.data[0].programDbId).to.eql(\"c9e335d2-3057-4958-a43e-e38cf61d09ca\");",
 									"    pm.expect(jsonData.result.data[0].programName).to.eql(\"API Program\");",
-									"    pm.expect(jsonData.result.data[0].startDate).to.eql(\"20190122\");",
+									"    pm.expect(jsonData.result.data[0].startDate).to.eql(\"20190320\");",
 									"    pm.expect(jsonData.result.data[0].active).to.eql(true);",
 									"});",
 									"",
 									"pm.test(\"Check details of an associated environment are correct\", function() {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].studies[0].studyDbId).to.eql(4);",
-									"    pm.expect(jsonData.result.data[0].studies[0].studyName).to.eql(\"Locked Study Trial 20190001 Environment Number 1\");",
-									"    pm.expect(jsonData.result.data[0].studies[0].locationDbId).to.eql(\"9014\");",
-									"    pm.expect(jsonData.result.data[0].studies[0].locationName).to.eql(\"INT SERVICE FOR NATIONAL AGRICULTURAL RESEARCH\");",
+									"    pm.expect(jsonData.result.data[0].studies[0].studyDbId).to.eql(6);",
+									"    pm.expect(jsonData.result.data[0].studies[0].studyName).to.eql(\"Study with no phenotype count Environment Number 1\");",
+									"    pm.expect(jsonData.result.data[0].studies[0].locationDbId).to.eql(\"9008\");",
+									"    pm.expect(jsonData.result.data[0].studies[0].locationName).to.eql(\"INT POTATO CENTER\");",
 									"});"
 								],
 								"type": "text/javascript"
