@@ -6070,7 +6070,7 @@
 							"response": []
 						},
 						{
-							"name": "Generate custom subobservation dataset",
+							"name": "Generate custom subobservation dataset with multiple instanceIds",
 							"event": [
 								{
 									"listen": "test",
@@ -6114,7 +6114,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"datasetTypeId\": {{custom_subobs_datasetTypeId}},\r\n  \"datasetName\": \"Custom001\",\r\n  \"instanceIds\": [\r\n    {{instanceId_for_subobs_generation}}\r\n  ],\r\n  \"sequenceVariableId\": {{custom_subobs_no_cvtermId}},\r\n  \"numberOfSubObservationUnits\": 4\r\n}"
+									"raw": "{\r\n  \"datasetTypeId\": {{custom_subobs_datasetTypeId}},\r\n  \"datasetName\": \"Custom001\",\r\n  \"instanceIds\": [\r\n    {{instanceId_for_subobs_generation}},{{instanceId_for_subobs_generation2}}\r\n  ],\r\n  \"sequenceVariableId\": {{custom_subobs_no_cvtermId}},\r\n  \"numberOfSubObservationUnits\": 4\r\n}"
 								},
 								"url": {
 									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId_for_subobs_generation}}/datasets/{{plot_datasetId_for_subobs_generation}}/generation",
