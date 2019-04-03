@@ -5810,6 +5810,15 @@
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check dataset name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.name).to.equal(\"PlantTest001\");",
+											"});",
+											"pm.test(\"Check datasetTypeId\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.datasetTypeId).to.equal(parseInt(pm.environment.get(\"plant_subobs_datasetTypeId\")));",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5938,6 +5947,15 @@
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check dataset name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.name).to.equal(\"Quadrat001\");",
+											"});",
+											"pm.test(\"Check datasetTypeId\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.datasetTypeId).to.equal(parseInt(pm.environment.get(\"quadrat_subobs_datasetTypeId\")));",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5995,6 +6013,15 @@
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check dataset name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.name).to.equal(\"TimeSeries001\");",
+											"});",
+											"pm.test(\"Check datasetTypeId\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.datasetTypeId).to.equal(parseInt(pm.environment.get(\"time_series_subobs_datasetTypeId\")));",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6052,6 +6079,15 @@
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check dataset name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.name).to.equal(\"Custom001\");",
+											"});",
+											"pm.test(\"Check datasetTypeId\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.datasetTypeId).to.equal(parseInt(pm.environment.get(\"custom_subobs_datasetTypeId\")));",
 											"});"
 										],
 										"type": "text/javascript"
