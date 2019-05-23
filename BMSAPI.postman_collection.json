@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e211dd9d-44fc-4888-8d13-f5d47c6dbab0",
+		"_postman_id": "7b1459bd-0c93-445e-9fdd-3040557dade1",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -4446,7 +4446,7 @@
 					"name": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables",
 					"item": [
 						{
-							"name": "Verify adding variable to a sub obs dataset with a date scale",
+							"name": "Verify adding variable to a sub obs dataset with a numeric scale",
 							"event": [
 								{
 									"listen": "test",
@@ -4458,8 +4458,8 @@
 											"});",
 											"pm.test(\"Check returned \", function () {",
 											"    var jsonData = pm.response.json();",
-											"    var varId = Number(pm.environment.get(\"germitest_date_cvtermId\"));",
-											"    pm.expect(jsonData.termId).to.equal(varId);",
+											"    var biomasId = Number(pm.environment.get(\"study_biomass_cvterm_id\"));",
+											"    pm.expect(jsonData.termId).to.equal(biomasId);",
 											"});",
 											""
 										],
@@ -4478,13 +4478,13 @@
 									{
 										"key": "Content-Type",
 										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{germitest_date_cvtermId}}\",\r\n  \"studyAlias\": \"GermiTest_date\"\r\n}"
+									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"studyAlias\": \"Biomas_yield\"\r\n}"
 								},
 								"url": {
 									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables",
@@ -4556,6 +4556,192 @@
 										"{{studyId}}",
 										"datasets",
 										"{{study_plot_datasetId}}",
+										"variables"
+									]
+								},
+								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify adding variable to a sub obs dataset with a categorical scale",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check returned \", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var biomasId = Number(pm.environment.get(\"study_pestpressure_cvtermId\"));",
+											"    pm.expect(jsonData.termId).to.equal(biomasId);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_pestpressure_cvtermId}}\",\r\n  \"studyAlias\": \"PestPressure_0_9\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableId={{study_pestpressure_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableId",
+											"value": "{{study_pestpressure_cvtermId}}"
+										}
+									]
+								},
+								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify adding variable to a sub obs dataset with a date scale",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check returned \", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var varId = Number(pm.environment.get(\"germitest_date_cvtermId\"));",
+											"    pm.expect(jsonData.termId).to.equal(varId);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{germitest_date_cvtermId}}\",\r\n  \"studyAlias\": \"GermiTest_date\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									]
+								},
+								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify adding variable to a sub obs dataset with a character scale",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check returned \", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var biomasId = Number(pm.environment.get(\"study_notes_cvtermId\"));",
+											"    pm.expect(jsonData.termId).to.equal(biomasId);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_notes_cvtermId}}\",\r\n  \"studyAlias\": \"NOTES\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
 										"variables"
 									]
 								},
@@ -4742,132 +4928,6 @@
 							"response": []
 						},
 						{
-							"name": "Verify adding variable to a sub obs dataset with a numeric scale",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"pm.test(\"Check returned \", function () {",
-											"    var jsonData = pm.response.json();",
-											"    var biomasId = Number(pm.environment.get(\"study_biomass_cvterm_id\"));",
-											"    pm.expect(jsonData.termId).to.equal(biomasId);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"studyAlias\": \"Biomas_yield\"\r\n}"
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables"
-									]
-								},
-								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify adding variable to a sub obs dataset with a categorical scale",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"pm.test(\"Check returned \", function () {",
-											"    var jsonData = pm.response.json();",
-											"    var biomasId = Number(pm.environment.get(\"study_pestpressure_cvtermId\"));",
-											"    pm.expect(jsonData.termId).to.equal(biomasId);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_pestpressure_cvtermId}}\",\r\n  \"studyAlias\": \"PestPressure_0_9\"\r\n}"
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableId={{study_pestpressure_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables"
-									],
-									"query": [
-										{
-											"key": "variableId",
-											"value": "{{study_pestpressure_cvtermId}}"
-										}
-									]
-								},
-								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
-							},
-							"response": []
-						},
-						{
 							"name": "Verify response code and body when entered not supported variable type",
 							"event": [
 								{
@@ -5043,66 +5103,6 @@
 							"response": []
 						},
 						{
-							"name": "Verify adding variable to a sub obs dataset with a character scale",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "86d3d0b2-bf51-4f59-b89f-19400928ae64",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"pm.test(\"Check returned \", function () {",
-											"    var jsonData = pm.response.json();",
-											"    var biomasId = Number(pm.environment.get(\"study_notes_cvtermId\"));",
-											"    pm.expect(jsonData.termId).to.equal(biomasId);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"variableTypeId\": \"{{Trait_cvtermId}}\",\r\n  \"variableId\": \"{{study_notes_cvtermId}}\",\r\n  \"studyAlias\": \"NOTES\"\r\n}"
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables"
-									]
-								},
-								"description": "PUT /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
-							},
-							"response": []
-						},
-						{
 							"name": "Verify response code and body when entered non-existing datasetId",
 							"event": [
 								{
@@ -5164,8 +5164,1261 @@
 					"_postman_isSubFolder": true
 				},
 				{
+					"name": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}",
+					"item": [
+						{
+							"name": "Verify if user can add accepted observation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.test(\"Check returned variableId \", function () {",
+											"    var biomasId = Number(pm.environment.get(\"study_biomass_cvterm_id\"));",
+											"    pm.expect(jsonData.variableId).to.equal(biomasId);",
+											"});",
+											"pm.test(\"Check returned value \", function () {",
+											"    pm.expect(jsonData.value).to.equal(\"5\");",
+											"});",
+											"",
+											"pm.test(\"Check returned categoricalValueId \", function () {",
+											"    pm.expect(jsonData.categoricalValueId).to.equal(null);",
+											"});",
+											"pm.test(\"Check returned status \", function () {",
+											"    pm.expect(jsonData.status).to.equal(null);",
+											"});",
+											"pm.test(\"Check returned observationUnitId \", function () {",
+											"    var observationUnitId = Number(pm.environment.get(\"study_observationUnitId\"));",
+											"    pm.expect(jsonData.observationUnitId).to.equal(observationUnitId);",
+											"});",
+											"pm.test(\"Check returned draftCategoricalValueId \", function () {",
+											"    pm.expect(jsonData.draftCategoricalValueId).to.equal(null);",
+											"});",
+											"pm.test(\"Check returned draftValue \", function () {",
+											"    pm.expect(jsonData.draftValue).to.equal(null);",
+											"});",
+											"pm.test(\"Check returned draftMode \", function () {",
+											"    pm.expect(jsonData.draftMode).to.equal(false);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{masterToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/observationUnits/{{study_observationUnitId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"observationUnits",
+										"{{study_observationUnitId}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered non-existing studyId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{non_existing_study_id}}/datasets/{{study_subobs_datasetId}}/observationUnits/{{study_observationUnitId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{non_existing_study_id}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"observationUnits",
+										"{{study_observationUnitId}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered non-existing datasetId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Dataset does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{non_existing_dataset_id}}/observationUnits/{{study_observationUnitId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{non_existing_dataset_id}}",
+										"observationUnits",
+										"{{study_observationUnitId}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to studyId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{string_input}}/datasets/{{study_observationUnitId}}/observationUnits/{{study_observationUnitId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{string_input}}",
+										"datasets",
+										"{{study_observationUnitId}}",
+										"observationUnits",
+										"{{study_observationUnitId}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to datasetId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{string_input}}/observationUnits/{{study_observationUnitId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{string_input}}",
+										"observationUnits",
+										"{{study_observationUnitId}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to observationUnitId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/observationUnits/{{string_input}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"observationUnits",
+										"{{string_input}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered datasetId that is not a subobs dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 501\", function () {",
+											"    pm.response.to.have.status(501);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Dataset is not a subobservation dataset.\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{masterToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/observationUnits/{{study_observationUnitId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"observationUnits",
+										"{{study_observationUnitId}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered studyId and subobs datasetId do not belong to each other",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Specified dataset 3017 does not belong to the study 3013\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{trialStudyId}}/datasets/{{study_subobs_datasetId}}/observationUnits/{{study_observationUnitId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{trialStudyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"observationUnits",
+										"{{study_observationUnitId}}"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered invalid observationUnitId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1abccc7b-cf55-4065-b182-061588ec1222",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid observation unit id.\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoricalValueId\": null,\r\n  \"variableId\": \"{{study_biomass_cvterm_id}}\",\r\n  \"value\": \"5\",\r\n  \"observationUnitId\": \"{{study_observationUnitId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/observationUnits/500",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"observationUnits",
+										"500"
+									]
+								},
+								"description": "POST /crops/{crop}/studies/{studyId}/datasets/{datasetId}/observationUnits/{observationUnitId}"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}",
+					"item": [
+						{
+							"name": "Verify response code and body when entered valid inputs and trait variableTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].id).to.equal(18100);",
+											"    pm.expect(jsonData[1].id).to.equal(18000);",
+											"    pm.expect(jsonData[2].id).to.equal(18010);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable names\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.equal(\"WeedPressure_number\");",
+											"    pm.expect(jsonData[1].name).to.equal(\"Grain_yield\");",
+											"    pm.expect(jsonData[2].name).to.equal(\"Biomas_yield\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "{{masterToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{Trait_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"variables",
+										"{{Trait_cvtermId}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered valid inputs and environment detail variableTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].id).to.equal(8170);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.equal(\"TRIAL_INSTANCE\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{variableTypeId_env_detail}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"variables",
+										"{{variableTypeId_env_detail}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered valid inputs and experimental design variableTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].id).to.equal(8200);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.equal(\"PLOT_NO\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{variableTypeId_exp_design}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"variables",
+										"{{variableTypeId_exp_design}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered valid inputs and germplasm descriptor variableTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].id).to.equal(8255);",
+											"    pm.expect(jsonData[1].id).to.equal(8240);",
+											"    pm.expect(jsonData[2].id).to.equal(8250);",
+											"    pm.expect(jsonData[3].id).to.equal(8230);",
+											"    pm.expect(jsonData[4].id).to.equal(8201);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.equal(\"ENTRY_TYPE\");",
+											"    pm.expect(jsonData[1].name).to.equal(\"GID\");",
+											"    pm.expect(jsonData[2].name).to.equal(\"DESIGNATION\");",
+											"    pm.expect(jsonData[3].name).to.equal(\"ENTRY_NO\");",
+											"    pm.expect(jsonData[4].name).to.equal(\"OBS_UNIT_ID\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{variableTypeId_germ_desc}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"variables",
+										"{{variableTypeId_germ_desc}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered valid inputs and observation units variableTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].id).to.equal(8206);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.equal(\"PLANT_NO\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables/{{variableTypeId_obs_unit}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables",
+										"{{variableTypeId_obs_unit}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered valid inputs and selection method variableTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable id\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].id).to.equal(8263);",
+											"});",
+											"",
+											"pm.test(\"Check returned variable name\", function() {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.equal(\"NPSEL\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables/{{variableTypeId_selection}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables",
+										"{{variableTypeId_selection}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered non-existing studyId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.equal(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{non_existing_study_id}}/datasets/{{study_plot_datasetId}}/variables/{{Trait_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{non_existing_study_id}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"variables",
+										"{{Trait_cvtermId}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered non-existing datasetId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.equal(\"Dataset does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{non_existing_dataset_id}}/variables/{{Trait_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{non_existing_dataset_id}}",
+										"variables",
+										"{{Trait_cvtermId}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to studyId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{string_input}}/datasets/{{study_plot_datasetId}}/variables/{{Trait_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{string_input}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"variables",
+										"{{Trait_cvtermId}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to datasetId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{string_input}}/variables/{{Trait_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{string_input}}",
+										"variables",
+										"{{Trait_cvtermId}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to variableTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify error message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{string_input}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_plot_datasetId}}",
+										"variables",
+										"{{string_input}}"
+									]
+								},
+								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables",
 					"item": [
+						{
+							"name": "Delete an existing numeric trait from subobservation dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "{{masterToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_biomass_cvterm_id}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_biomass_cvterm_id}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
 						{
 							"name": "Delete an existing categorical trait from subobservation dataset",
 							"event": [
@@ -5213,6 +6466,168 @@
 										{
 											"key": "variableIds",
 											"value": "{{study_pestpressure_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an existing date trait from subobservation dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{germitest_date_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{germitest_date_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an existing character trait from subobservation dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_notes_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{study_notes_cvtermId}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an existing selection variable from subobservation dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{npsel_cvtermId}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{npsel_cvtermId}}"
 										}
 									]
 								},
@@ -5395,60 +6810,6 @@
 							"response": []
 						},
 						{
-							"name": "Delete an existing date trait from subobservation dataset",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{germitest_date_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables"
-									],
-									"query": [
-										{
-											"key": "variableIds",
-											"value": "{{germitest_date_cvtermId}}"
-										}
-									]
-								},
-								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
-							},
-							"response": []
-						},
-						{
 							"name": "Verify response code and body when entered a variableId that is not existing in the dataset",
 							"event": [
 								{
@@ -5565,60 +6926,6 @@
 							"response": []
 						},
 						{
-							"name": "Delete an existing numeric trait from subobservation dataset",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"value": "{{masterToken}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_biomass_cvterm_id}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables"
-									],
-									"query": [
-										{
-											"key": "variableIds",
-											"value": "{{study_biomass_cvterm_id}}"
-										}
-									]
-								},
-								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
-							},
-							"response": []
-						},
-						{
 							"name": "Verify response code and body when entered string input to datasetId",
 							"event": [
 								{
@@ -5663,114 +6970,6 @@
 										"{{studyId}}",
 										"datasets",
 										"{{string_input}}",
-										"variables"
-									],
-									"query": [
-										{
-											"key": "variableIds",
-											"value": "{{study_notes_cvtermId}}"
-										}
-									]
-								},
-								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete an existing selection variable from subobservation dataset",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{npsel_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables"
-									],
-									"query": [
-										{
-											"key": "variableIds",
-											"value": "{{npsel_cvtermId}}"
-										}
-									]
-								},
-								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete an existing character trait from subobservation dataset",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{study_notes_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
 										"variables"
 									],
 									"query": [
@@ -6498,643 +7697,6 @@
 									]
 								},
 								"description": "POST /crops/{cropName}/studies/{studyId}/datasets/{parentId}/generation"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}",
-					"item": [
-						{
-							"name": "Verify response code and body when entered valid inputs and trait variableTypeId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable id\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].id).to.equal(18100);",
-											"    pm.expect(jsonData[1].id).to.equal(18000);",
-											"    pm.expect(jsonData[2].id).to.equal(18010);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable names\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].name).to.equal(\"WeedPressure_number\");",
-											"    pm.expect(jsonData[1].name).to.equal(\"Grain_yield\");",
-											"    pm.expect(jsonData[2].name).to.equal(\"Biomas_yield\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"value": "{{masterToken}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{Trait_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_plot_datasetId}}",
-										"variables",
-										"{{Trait_cvtermId}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered valid inputs and environment detail variableTypeId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable id\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].id).to.equal(8170);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable name\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].name).to.equal(\"TRIAL_INSTANCE\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{variableTypeId_env_detail}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_plot_datasetId}}",
-										"variables",
-										"{{variableTypeId_env_detail}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered valid inputs and experimental design variableTypeId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable id\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].id).to.equal(8200);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable name\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].name).to.equal(\"PLOT_NO\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{variableTypeId_exp_design}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_plot_datasetId}}",
-										"variables",
-										"{{variableTypeId_exp_design}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered valid inputs and germplasm descriptor variableTypeId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable id\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].id).to.equal(8255);",
-											"    pm.expect(jsonData[1].id).to.equal(8240);",
-											"    pm.expect(jsonData[2].id).to.equal(8250);",
-											"    pm.expect(jsonData[3].id).to.equal(8230);",
-											"    pm.expect(jsonData[4].id).to.equal(8201);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable name\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].name).to.equal(\"ENTRY_TYPE\");",
-											"    pm.expect(jsonData[1].name).to.equal(\"GID\");",
-											"    pm.expect(jsonData[2].name).to.equal(\"DESIGNATION\");",
-											"    pm.expect(jsonData[3].name).to.equal(\"ENTRY_NO\");",
-											"    pm.expect(jsonData[4].name).to.equal(\"OBS_UNIT_ID\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{variableTypeId_germ_desc}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_plot_datasetId}}",
-										"variables",
-										"{{variableTypeId_germ_desc}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered valid inputs and observation units variableTypeId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable id\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].id).to.equal(8206);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable name\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].name).to.equal(\"PLANT_NO\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables/{{variableTypeId_obs_unit}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables",
-										"{{variableTypeId_obs_unit}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered valid inputs and selection method variableTypeId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable id\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].id).to.equal(8263);",
-											"});",
-											"",
-											"pm.test(\"Check returned variable name\", function() {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData[0].name).to.equal(\"NPSEL\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables/{{variableTypeId_selection}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_subobs_datasetId}}",
-										"variables",
-										"{{variableTypeId_selection}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered non-existing studyId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {",
-											"    pm.response.to.have.status(404);",
-											"});",
-											"pm.test(\"Verify error message\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.errors[0].message).to.equal(\"Study does not exist\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{non_existing_study_id}}/datasets/{{study_plot_datasetId}}/variables/{{Trait_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{non_existing_study_id}}",
-										"datasets",
-										"{{study_plot_datasetId}}",
-										"variables",
-										"{{Trait_cvtermId}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered non-existing datasetId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {",
-											"    pm.response.to.have.status(404);",
-											"});",
-											"pm.test(\"Verify error message\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.errors[0].message).to.equal(\"Dataset does not exist\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{non_existing_dataset_id}}/variables/{{Trait_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{non_existing_dataset_id}}",
-										"variables",
-										"{{Trait_cvtermId}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered string input to studyId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 500\", function () {",
-											"    pm.response.to.have.status(500);",
-											"});",
-											"pm.test(\"Verify error message\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{string_input}}/datasets/{{study_plot_datasetId}}/variables/{{Trait_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{string_input}}",
-										"datasets",
-										"{{study_plot_datasetId}}",
-										"variables",
-										"{{Trait_cvtermId}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered string input to datasetId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 500\", function () {",
-											"    pm.response.to.have.status(500);",
-											"});",
-											"pm.test(\"Verify error message\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{string_input}}/variables/{{Trait_cvtermId}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{string_input}}",
-										"variables",
-										"{{Trait_cvtermId}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify response code and body when entered string input to variableTypeId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "9ed945ed-1c5e-4a2a-a094-5d265d301385",
-										"exec": [
-											"pm.test(\"Status code is 500\", function () {",
-											"    pm.response.to.have.status(500);",
-											"});",
-											"pm.test(\"Verify error message\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"type": "text",
-										"value": "{{masterToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_plot_datasetId}}/variables/{{string_input}}",
-									"host": [
-										"{{BMSurl}}"
-									],
-									"path": [
-										"crops",
-										"{{crop}}",
-										"studies",
-										"{{studyId}}",
-										"datasets",
-										"{{study_plot_datasetId}}",
-										"variables",
-										"{{string_input}}"
-									]
-								},
-								"description": "GET /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables/{variableTypeId}"
 							},
 							"response": []
 						}
