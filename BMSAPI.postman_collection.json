@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7b1459bd-0c93-445e-9fdd-3040557dade1",
+		"_postman_id": "96efe3e8-692b-428b-9943-d4021f9bae9b",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -132,6 +132,10 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
+									"pm.test(\"Check total call count\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.totalCount).to.eql(18);",
+									"});",
 									"",
 									"",
 									"pm.test(\"Check a study table call\", function () {",
@@ -208,11 +212,7 @@
 									"pm.test(\"Check a study table call\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.result.data[0].call).to.eql(\"studies/{studyDbId}/table\");",
-									"});",
-									"",
-									"pm.test(\"Check if format of samples call is csv\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.result.data[0].datatypes[2]).to.eql(\"csv\");",
+									"        pm.expect(jsonData.result.data[0].datatypes[2]).to.eql(\"csv\");",
 									"});",
 									""
 								],
@@ -238,7 +238,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=csv",
+							"raw": "{{BMSurl}}/brapi/v1/calls?dataType=csv",
 							"host": [
 								"{{BMSurl}}"
 							],
@@ -249,7 +249,7 @@
 							],
 							"query": [
 								{
-									"key": "datatype",
+									"key": "dataType",
 									"value": "csv"
 								}
 							]
@@ -303,7 +303,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/brapi/v1/calls?datatype=tsv",
+							"raw": "{{BMSurl}}/brapi/v1/calls?dataType=tsv",
 							"host": [
 								"{{BMSurl}}"
 							],
@@ -314,7 +314,7 @@
 							],
 							"query": [
 								{
-									"key": "datatype",
+									"key": "dataType",
 									"value": "tsv"
 								}
 							]
@@ -377,7 +377,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BMSurl}}/brapi/v1/calls",
+							"raw": "{{BMSurl}}/brapi/v1/calls?dataType=json",
 							"host": [
 								"{{BMSurl}}"
 							],
@@ -385,6 +385,12 @@
 								"brapi",
 								"v1",
 								"calls"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "json"
+								}
 							]
 						}
 					},
@@ -1742,7 +1748,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{env_datasetTypeId}}, {{plot_datasetTypeId}},{{subobs_datasetTypeId}}",
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{env_datasetTypeId}}, {{plot_datasetTypeId}},{{plant_subobs_datasetTypeId}}",
 									"host": [
 										"{{BMSurl}}"
 									],
@@ -1756,7 +1762,7 @@
 									"query": [
 										{
 											"key": "datasetTypeIds",
-											"value": "{{env_datasetTypeId}}, {{plot_datasetTypeId}},{{subobs_datasetTypeId}}"
+											"value": "{{env_datasetTypeId}}, {{plot_datasetTypeId}},{{plant_subobs_datasetTypeId}}"
 										}
 									]
 								},
@@ -1961,7 +1967,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{env_datasetTypeId}}",
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{plant_subobs_datasetTypeId}}",
 									"host": [
 										"{{BMSurl}}"
 									],
@@ -1975,7 +1981,7 @@
 									"query": [
 										{
 											"key": "datasetTypeIds",
-											"value": "{{env_datasetTypeId}}"
+											"value": "{{plant_subobs_datasetTypeId}}"
 										}
 									]
 								},
