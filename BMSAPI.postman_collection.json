@@ -1739,7 +1739,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{env_datasetTypeId}}, {{plot_datasetTypeId}},{{subobs_datasetTypeId}}",
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets?datasetTypeIds={{env_datasetTypeId}}, {{plot_datasetTypeId}},{{plant_subobs_datasetTypeId}}",
 									"host": [
 										"{{BMSurl}}"
 									],
@@ -1753,7 +1753,7 @@
 									"query": [
 										{
 											"key": "datasetTypeIds",
-											"value": "{{env_datasetTypeId}}, {{plot_datasetTypeId}},{{subobs_datasetTypeId}}"
+											"value": "{{env_datasetTypeId}}, {{plot_datasetTypeId}},{{plant_subobs_datasetTypeId}}"
 										}
 									]
 								},
