@@ -122,7 +122,7 @@
 			"name": "brapi-call-services",
 			"item": [
 				{
-					"name": "GET /brapi/v1/calls no specified format",
+					"name": "Verify calls no specified format",
 					"event": [
 						{
 							"listen": "test",
@@ -194,7 +194,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /brapi/v1/calls csv format",
+					"name": "Verify calls with csv format",
 					"event": [
 						{
 							"listen": "test",
@@ -255,7 +255,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /brapi/v1/calls tsv format",
+					"name": "Verify calls tsv format",
 					"event": [
 						{
 							"listen": "test",
@@ -320,7 +320,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /brapi/v1/calls json format",
+					"name": "Verify calls with json format",
 					"event": [
 						{
 							"listen": "test",
@@ -391,7 +391,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /brapi/v1/calls text/csv format",
+					"name": "Verify calls with  text/csv format",
 					"event": [
 						{
 							"listen": "test",
@@ -456,7 +456,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /brapi/v1/calls text/tsv",
+					"name": "Verify calls with text/tsv format",
 					"event": [
 						{
 							"listen": "test",
@@ -521,7 +521,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /brapi/v1/calls application/json format",
+					"name": "Verify calls with application/json format",
 					"event": [
 						{
 							"listen": "test",
@@ -666,7 +666,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /brapi/v1/calls application/flapjack",
+					"name": "Verify calls with application/flapjack",
 					"event": [
 						{
 							"listen": "test",
