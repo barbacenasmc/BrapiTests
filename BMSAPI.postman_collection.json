@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "72404bcc-d7f6-4204-8f04-b4b59d77d3d0",
+		"_postman_id": "1aaeda8f-cbf2-4ec0-b5f6-3547119ab52e",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -384,6 +384,281 @@
 								{
 									"key": "dataType",
 									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls text/csv format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check total call count\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.totalCount).to.eql(1);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].call).to.eql(\"studies/{studyDbId}/table\");",
+									"        pm.expect(jsonData.result.data[0].dataTypes[2]).to.eql(\"text/csv\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?dataType=text/csv",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "text/csv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls text/tsv",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check a study table call\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].call).to.eql(\"studies/{studyDbId}/table\");",
+									"});",
+									"",
+									"pm.test(\"Check if format of samples call is tsv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].dataTypes[1]).to.eql(\"text/tsv\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?dataType=text/tsv",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "text/tsv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls application/json format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check total call count\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.pagination.totalCount).to.eql(18);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check token call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[0].call).to.eql(\"token\");",
+									"    pm.expect(jsonData.result.data[0].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check crops call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[1].call).to.eql(\"crops\");",
+									"    pm.expect(jsonData.result.data[1].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check locations call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[2].call).to.eql(\"locations\");",
+									"    pm.expect(jsonData.result.data[2].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check phenotypes-search call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[3].call).to.eql(\"phenotypes-search\");",
+									"    pm.expect(jsonData.result.data[3].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check programs call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[4].call).to.eql(\"programs\");",
+									"    pm.expect(jsonData.result.data[4].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check samples/{sampleId} call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[5].call).to.eql(\"samples/{sampleId}\");",
+									"    pm.expect(jsonData.result.data[5].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check studies call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[6].call).to.eql(\"studies\");",
+									"    pm.expect(jsonData.result.data[6].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check studies/{studyDbId} call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[7].call).to.eql(\"studies/{studyDbId}\");",
+									"    pm.expect(jsonData.result.data[7].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check studies/{studyDbId}/table call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[8].call).to.eql(\"studies/{studyDbId}/table\");",
+									"    pm.expect(jsonData.result.data[8].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check trials call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[9].call).to.eql(\"trials\");",
+									"    pm.expect(jsonData.result.data[9].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check calls call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[11].call).to.eql(\"calls\");",
+									"    pm.expect(jsonData.result.data[11].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check germplasm-search call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[12].call).to.eql(\"germplasm-search\");",
+									"    pm.expect(jsonData.result.data[12].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check germplasm/{germplasmDbId} call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[13].call).to.eql(\"germplasm/{germplasmDbId}\");",
+									"    pm.expect(jsonData.result.data[13].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check germplasm/{germplasmDbId}/pedigree call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[14].call).to.eql(\"germplasm/{germplasmDbId}/pedigree\");",
+									"    pm.expect(jsonData.result.data[14].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check germplasm/{germplasmDbId}/progeny call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[15].call).to.eql(\"germplasm/{germplasmDbId}/progeny\");",
+									"    pm.expect(jsonData.result.data[15].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"pm.test(\"Check search/germplasm call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[16].call).to.eql(\"search/germplasm\");",
+									"    pm.expect(jsonData.result.data[16].dataTypes[0]).to.eql(\"application/json\");",
+									"});",
+									"",
+									"pm.test(\"Check search/germplasm/{searchResultsDbid} call\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.result.data[17].call).to.eql(\"search/germplasm/{searchResultsDbid}\");",
+									"    pm.expect(jsonData.result.data[17].dataTypes[0]).to.eql(\"application/json\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?dataType=application/json",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "application/json"
 								}
 							]
 						}
