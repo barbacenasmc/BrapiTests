@@ -664,6 +664,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET /brapi/v1/calls application/flapjack",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3570823b-e7b2-441a-8fdd-23dcfa4a260a",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Check if format of samples call is tsv\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.metadata.status[0].message).to.eql(\"not found calls\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{masterToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/brapi/v1/calls?dataType=application/flapjack",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"brapi",
+								"v1",
+								"calls"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "application/flapjack"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
