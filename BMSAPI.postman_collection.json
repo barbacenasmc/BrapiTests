@@ -8966,7 +8966,78 @@
 											"value": "410"
 										}
 									]
+								},
+								"description": "GET /location/{cropname}"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET /location/{cropname}/search",
+					"item": [
+						{
+							"name": "Verify response code and body when entered valid cropname and query string",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "aafb7ca6-2703-44eb-adbd-164c72e63e29",
+										"exec": [
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check Test Data Location\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.pageResults[0].id).to.eql(\"9017\")",
+											"    pm.expect(jsonData.pageResults[0].name).to.eql(\"Test Data Location\")",
+											"    pm.expect(jsonData.pageResults[0].abbreviation).to.eql(\"TDL\")",
+											"    pm.expect(jsonData.pageResults[0].locationType.id).to.eql(\"410\")",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/location/{{crop}}/search?q=test",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"location",
+										"{{crop}}",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "test"
+										}
+									]
+								},
+								"description": "GET /location/{cropname}/search"
 							},
 							"response": []
 						}
