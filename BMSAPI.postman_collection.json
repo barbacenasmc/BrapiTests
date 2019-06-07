@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1aaeda8f-cbf2-4ec0-b5f6-3547119ab52e",
+		"_postman_id": "98021a8d-6d3c-40ea-91d9-4dab47b655a8",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -7196,6 +7196,64 @@
 						},
 						{
 							"name": "Verify response code and body when entered string input to variableId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7578865-fbb7-460c-b36c-15a6b6fb0d84",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Verify response message\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/crops/{{crop}}/studies/{{studyId}}/datasets/{{study_subobs_datasetId}}/variables?variableIds={{string_input}}",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"crops",
+										"{{crop}}",
+										"studies",
+										"{{studyId}}",
+										"datasets",
+										"{{study_subobs_datasetId}}",
+										"variables"
+									],
+									"query": [
+										{
+											"key": "variableIds",
+											"value": "{{string_input}}"
+										}
+									]
+								},
+								"description": "DELETE /crops/{crop}/studies/{studyId}/datasets/{datasetId}/variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify response code and body when entered string input to variableId Copy",
 							"event": [
 								{
 									"listen": "test",
