@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1aaeda8f-cbf2-4ec0-b5f6-3547119ab52e",
+		"_postman_id": "f1ba5357-57ba-42e2-b5f2-bc0550d907e0",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -8889,7 +8889,162 @@
 		},
 		{
 			"name": "location-service",
-			"item": []
+			"item": [
+				{
+					"name": "GET /location/{cropname}",
+					"item": [
+						{
+							"name": "Verify response code and body when entered valid cropname and locationTypeId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "aafb7ca6-2703-44eb-adbd-164c72e63e29",
+										"exec": [
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Check Default Breeding Location\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.pageResults[0].id).to.eql(\"6001\")",
+											"    pm.expect(jsonData.pageResults[0].name).to.eql(\"Default Breeding Location\")",
+											"    pm.expect(jsonData.pageResults[0].abbreviation).to.eql(\"DBL\")",
+											"    pm.expect(jsonData.pageResults[0].locationType.id).to.eql(\"410\")",
+											"});",
+											"",
+											"pm.test(\"Check Unspecified Location\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.pageResults[1].id).to.eql(\"9016\")",
+											"    pm.expect(jsonData.pageResults[1].name).to.eql(\"Unspecified Location\")",
+											"    pm.expect(jsonData.pageResults[1].abbreviation).to.eql(\"NOLOC\")",
+											"    pm.expect(jsonData.pageResults[1].locationType.id).to.eql(\"410\")",
+											"});",
+											"",
+											"pm.test(\"Check Test Data Location\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.pageResults[2].id).to.eql(\"9017\")",
+											"    pm.expect(jsonData.pageResults[2].name).to.eql(\"Test Data Location\")",
+											"    pm.expect(jsonData.pageResults[2].abbreviation).to.eql(\"TDL\")",
+											"    pm.expect(jsonData.pageResults[2].locationType.id).to.eql(\"410\")",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "{{masterToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/location/{{crop}}?locationTypeId=410",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"location",
+										"{{crop}}"
+									],
+									"query": [
+										{
+											"key": "locationTypeId",
+											"value": "410"
+										}
+									]
+								},
+								"description": "GET /location/{cropname}"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET /location/{cropname}/search",
+					"item": [
+						{
+							"name": "Verify response code and body when entered valid cropname and query string",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "aafb7ca6-2703-44eb-adbd-164c72e63e29",
+										"exec": [
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Check Test Data Location\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.pageResults[0].id).to.eql(\"9017\")",
+											"    pm.expect(jsonData.pageResults[0].name).to.eql(\"Test Data Location\")",
+											"    pm.expect(jsonData.pageResults[0].abbreviation).to.eql(\"TDL\")",
+											"    pm.expect(jsonData.pageResults[0].locationType.id).to.eql(\"410\")",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"type": "text",
+										"value": "{{masterToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BMSurl}}/location/{{crop}}/search?q=test",
+									"host": [
+										"{{BMSurl}}"
+									],
+									"path": [
+										"location",
+										"{{crop}}",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "test"
+										}
+									]
+								},
+								"description": "GET /location/{cropname}/search"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
 		},
 		{
 			"name": "brapi-study-services",
