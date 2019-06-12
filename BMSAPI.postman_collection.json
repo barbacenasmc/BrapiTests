@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f1ba5357-57ba-42e2-b5f2-bc0550d907e0",
+		"_postman_id": "da675960-d814-44b8-ade4-7ece75259d72",
 		"name": "BMSAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -18,7 +18,10 @@
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.environment.unset(\"masterToken\");",
-									"pm.environment.set(\"masterToken\", jsonData.access_token);"
+									"pm.environment.set(\"masterToken\", jsonData.access_token);",
+									"pm.environment.unset(\"masterTokenExpiry\");",
+									"pm.environment.set(\"masterTokenExpiry\", jsonData.expires_in);",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -9605,6 +9608,133 @@
 								}
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ontology-class-service",
+			"item": [
+				{
+					"name": "Verify response code and returned classes when entered valid crop",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1dafa5cf-8e49-4ae1-9358-61b32e79fa54",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "04134399-afdb-48fb-87e8-2d7ce707468e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check returned classes\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0]).to.equal(\"Abiotic condition\");",
+									"    pm.expect(jsonData[1]).to.equal(\"Abiotic stress\");",
+									"    pm.expect(jsonData[2]).to.equal(\"Agronomic\");",
+									"    pm.expect(jsonData[3]).to.equal(\"Biochemical trait\");",
+									"    pm.expect(jsonData[4]).to.equal(\"Biotic condition\");",
+									"    pm.expect(jsonData[5]).to.equal(\"Biotic stress\");",
+									"    pm.expect(jsonData[6]).to.equal(\"Breeding methods\");",
+									"    pm.expect(jsonData[7]).to.equal(\"Breedingprocess\");",
+									"    pm.expect(jsonData[8]).to.equal(\"Bulking breeding methods\");",
+									"    pm.expect(jsonData[9]).to.equal(\"Climatic condition\");",
+									"    pm.expect(jsonData[10]).to.equal(\"Crop research ontology\");",
+									"    pm.expect(jsonData[11]).to.equal(\"Crop trait ontology\");",
+									"    pm.expect(jsonData[12]).to.equal(\"Crossing methods\");",
+									"    pm.expect(jsonData[13]).to.equal(\"Cultivar formation methods\");",
+									"    pm.expect(jsonData[14]).to.equal(\"Cytogenetic manipulation\");",
+									"    pm.expect(jsonData[15]).to.equal(\"Dataset Condition\");",
+									"    pm.expect(jsonData[16]).to.equal(\"Derivative breeding methods\");",
+									"    pm.expect(jsonData[17]).to.equal(\"Disease resistance\");",
+									"    pm.expect(jsonData[18]).to.equal(\"General\");",
+									"    pm.expect(jsonData[19]).to.equal(\"Generative breeding methods\");",
+									"    pm.expect(jsonData[20]).to.equal(\"Genetic Modification\");",
+									"    pm.expect(jsonData[21]).to.equal(\"Germplasm\");",
+									"    pm.expect(jsonData[22]).to.equal(\"Insect and pest resistance\");",
+									"    pm.expect(jsonData[23]).to.equal(\"Maintenance methods\");",
+									"    pm.expect(jsonData[24]).to.equal(\"Molecular property\");",
+									"    pm.expect(jsonData[25]).to.equal(\"Morphological\");",
+									"    pm.expect(jsonData[26]).to.equal(\"Mutation methods\");",
+									"    pm.expect(jsonData[27]).to.equal(\"Non-bulking breedingmethods\");",
+									"    pm.expect(jsonData[28]).to.equal(\"Passport\");",
+									"    pm.expect(jsonData[29]).to.equal(\"Phenology\");",
+									"    pm.expect(jsonData[30]).to.equal(\"Physiological\");",
+									"    pm.expect(jsonData[31]).to.equal(\"Post harvest\");",
+									"    pm.expect(jsonData[32]).to.equal(\"Quality\");",
+									"    pm.expect(jsonData[33]).to.equal(\"Seed acquisation methods\");",
+									"    pm.expect(jsonData[34]).to.equal(\"Seed increase methods\");",
+									"    pm.expect(jsonData[35]).to.equal(\"Seed storage\");",
+									"    pm.expect(jsonData[36]).to.equal(\"Site condition\");",
+									"    pm.expect(jsonData[37]).to.equal(\"Soil condition\");",
+									"    pm.expect(jsonData[38]).to.equal(\"Study condition\");",
+									"    pm.expect(jsonData[39]).to.equal(\"Trial Design\");",
+									"    pm.expect(jsonData[40]).to.equal(\"Trial environment\");",
+									"    pm.expect(jsonData[41]).to.equal(\"Trial management\");",
+									"    pm.expect(jsonData[42]).to.equal(\"Variate condition\");",
+									"    pm.expect(jsonData[43]).to.equal(\"Yield component\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{masterToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BMSurl}}/ontology/{{crop}}/classes",
+							"host": [
+								"{{BMSurl}}"
+							],
+							"path": [
+								"ontology",
+								"{{crop}}",
+								"classes"
+							]
+						},
+						"description": "GET /ontology/{cropname}/classes"
 					},
 					"response": []
 				}
