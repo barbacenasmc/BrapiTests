@@ -13121,6 +13121,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6d403d15-a074-41b6-978e-698066f95407",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -13187,6 +13218,37 @@
 											"});",
 											"",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d3fd169e-3d29-4c07-a7c7-d8278e8d4c1a",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
