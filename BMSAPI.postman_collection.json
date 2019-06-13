@@ -11240,6 +11240,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "87683e24-e575-4f5c-98f4-12aed4d81469",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -11301,6 +11332,37 @@
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData[3].id).to.eql(3);",
 									"    pm.expect(jsonData[3].description).to.eql(\"Technician\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5bb97748-6f47-4b29-b6ea-a8ea349c4b9b",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
