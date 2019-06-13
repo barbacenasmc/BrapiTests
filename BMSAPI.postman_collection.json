@@ -2549,6 +2549,56 @@
 			"item": [
 				{
 					"name": "GET /study/{cropname}/{studyId}/observations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47014d94-353c-4ab1-8ffc-eb5bb1c014ba",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Response message is no germplasm found \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.error).to.eql(\"Not Found\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6cef0b3e-1eee-42ea-acf4-cee41881be83",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
