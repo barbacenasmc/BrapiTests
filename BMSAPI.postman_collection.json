@@ -166,6 +166,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b4530a0a-879c-43a6-9581-7aa6b73d92ba",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -218,6 +249,37 @@
 									"        pm.expect(jsonData.result.data[0].datatypes[2]).to.eql(\"csv\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6646c58d-36c2-4f1f-b6c1-126003a2f6e5",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -283,6 +345,37 @@
 									"    pm.expect(jsonData.result.data[0].datatypes[1]).to.eql(\"tsv\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "334538f6-1ec9-4028-844e-d6756b29f336",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -353,6 +446,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bc969cbc-0079-41ae-bb0f-9f99ce5cb35d",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -418,6 +542,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a755db8c-6ae5-4020-b5af-be9a62060f27",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -480,6 +635,37 @@
 									"    pm.expect(jsonData.result.data[0].dataTypes[1]).to.eql(\"text/tsv\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "05ce8410-fb3d-4fa9-a51a-d78365995c33",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -628,6 +814,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "62828547-84b8-47b1-98a1-905e9a45fdd9",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -684,6 +901,37 @@
 									"    pm.expect(jsonData.metadata.status[0].message).to.eql(\"not found calls\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d30d805c-15a0-4100-bfa4-60971ddc2ea9",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -793,6 +1041,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "87bf50d9-9ad1-4b44-8783-fed255ff8222",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -898,6 +1177,37 @@
 									"    pm.expect(jsonData.result.data[0].countryOfOriginCode).to.eql(\"ORI_COUN1\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6fd77ce3-dda1-4bab-85d3-6d75a707150b",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1031,6 +1341,37 @@
 									"pm.test(\"Check acquisitionDate\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.result.data[0].acquisitionDate).to.eql(\"2018-10-25\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "55a20b17-d737-443b-a7a5-4d74f5d61362",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1169,6 +1510,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8e2a9b5c-a715-4a81-a936-5a20eed0abe0",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1220,6 +1592,37 @@
 									"    pm.expect(jsonData.metadata.status[0].message).to.eql(\"no germplasm found\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5f5d6a4d-f7fd-4b27-9f9c-6e92e15ba48f",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1324,6 +1727,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2c08c1c4-aa36-4463-a3af-41aa2b2e0eac",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1388,6 +1822,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ad711806-8de1-420b-9a5b-1d4e5d6e5c98",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1440,6 +1905,37 @@
 									"    pm.expect(jsonData.metadata.status[0].message).to.eql(\"no germplasm found\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bd7b83ec-15f8-47c6-95a6-bf4bc8a37c4a",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1715,6 +2211,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c719a90c-eb00-4229-9148-d1c4c1597c84",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1772,6 +2299,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "301e2866-3cd4-4ccd-842e-ecb8d99c4771",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1826,6 +2384,37 @@
 									"    pm.expect(jsonData.result.data[0].name).to.eql(\"API Program\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d7bf61b3-9ec8-40a9-8cef-5b45e50e08f2",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1888,6 +2477,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f9a1b189-5257-4362-b022-d71c9a322e55",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1929,6 +2549,56 @@
 			"item": [
 				{
 					"name": "GET /study/{cropname}/{studyId}/observations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47014d94-353c-4ab1-8ffc-eb5bb1c014ba",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Response message is no germplasm found \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.error).to.eql(\"Not Found\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6cef0b3e-1eee-42ea-acf4-cee41881be83",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -2001,6 +2671,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "30203e62-f97c-4f71-870e-812b86dc3788",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2055,6 +2756,37 @@
 											"pm.test(\"Check subobs dataset id\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData[2].datasetId).to.eql(parseInt(pm.environment.get(\"study_subobs_datasetId\")));",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3fe5643c-c3db-466b-b910-fb1be5860d8c",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2115,6 +2847,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6af63a45-19b6-45db-9e23-6be5a1c27d88",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2167,6 +2930,37 @@
 											"pm.test(\"Check env plot dataset id\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData[0].datasetId).to.eql(parseInt(pm.environment.get(\"study_plot_datasetId\")));",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "507f84e0-513a-4503-9a30-d2db8c097ffa",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2227,6 +3021,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "11c83acc-f9a2-4034-ad41-1a87eee81161",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2279,6 +3104,37 @@
 											"pm.test(\"Check subobs dataset id\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData[0].datasetId).to.eql(parseInt(pm.environment.get(\"study_subobs_datasetId\")));",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8ac71c51-89a6-4a4f-84b1-84b9b149d7c9",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2339,6 +3195,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d5cd3c4a-349c-45e7-9b86-e05ed3c6dfcc",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2385,6 +3272,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "af73f0eb-b5f8-4699-a1a7-7d9468c28240",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2442,6 +3360,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"9,999 is not a valid dataset type\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ef9ed08b-6f7f-4ea3-ab61-ff3688d84446",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2514,6 +3463,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fb5072c8-389a-4dbb-b6ca-8a62fdf935b3",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2570,6 +3550,37 @@
 											"});",
 											"",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e0b602a1-b5ea-44a8-93c0-76195919007c",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -2632,6 +3643,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "710bdfd7-52c7-405a-9122-6b1608f2c674",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2677,6 +3719,37 @@
 											"    pm.response.to.have.status(200);",
 											"});",
 											"//Other assertions to follow"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f9fa5023-1aae-45ae-b3b1-25bfcf3866cc",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -2727,6 +3800,37 @@
 											"pm.test(\"Your test name\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "122fe7c4-8a36-4efd-abb9-f0ba4cda060d",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2783,6 +3887,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "036a26ad-5e4f-4118-b64c-f425bdfe3c06",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2835,6 +3970,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b865acdf-675a-4860-9e50-2c8fdf11762d",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2883,6 +4049,37 @@
 											"    var jsonData = pm.response.json();",
 											"//    var studyId = Number(pm.environment.get(\"studyId\"));",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "52bbae1d-8680-4239-9082-10ecb0fc437c",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2957,6 +4154,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3be42283-6d6c-40ff-ba0c-04a23a098e72",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3005,6 +4233,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "962b8f44-226f-4cff-aeb6-9879c150ad20",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3061,6 +4320,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "cab324c7-b915-4a40-9363-c32b0bc3a4f3",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3109,6 +4399,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"Specified dataset 3022 does not belong to the study 3009\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "44a0603d-c719-4081-a04a-66513f2a21f7",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3165,6 +4486,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8645689c-d65f-44c6-ac61-29679d7cdd95",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3217,6 +4569,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "460e9de2-2412-4a1d-9749-498156a35d12",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3265,6 +4648,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9358a303-74be-4747-941f-96af832dea89",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3327,6 +4741,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "cb168629-7517-4159-96d5-55bb8dbaaefd",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3376,6 +4821,37 @@
 											"",
 											"pm.test(\"X-Total-Count is correct\", function () {",
 											"    pm.response.to.be.header(\"X-Total-Count\", \"80\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ea126295-3fff-4a3e-9a02-84810ae4f501",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3433,6 +4909,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7f800e14-1a99-4d8a-bee4-d8135eb5ea58",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3480,6 +4987,37 @@
 											"    pm.response.to.have.status(404);",
 											"});",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f9890a20-9571-41be-908e-549db25429b8",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -3533,6 +5071,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9c1df85c-3c80-4896-bb07-fcdb512f4317",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3580,6 +5149,37 @@
 											"    pm.response.to.have.status(400);",
 											"});",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1b8915fd-f436-44a2-9452-782b689b921c",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -3633,6 +5233,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "cb0dd970-ab29-4a71-9e01-b604daa501c7",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3680,6 +5311,37 @@
 											"    pm.response.to.have.status(400);",
 											"});",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e3db2d39-7069-4497-883d-7e643c23573b",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -3733,6 +5395,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4fc4d2c3-d972-4dc1-b14e-281ff348baf8",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3783,6 +5476,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "af7e99fd-1e9c-4024-81ae-5aa32ad76842",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3830,6 +5554,37 @@
 											"    pm.response.to.have.status(500);",
 											"});",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "80c45139-aca4-4539-81da-74a64e224c56",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -3936,6 +5691,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fa61ed55-2808-45f2-b574-cf244efc8e51",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -3986,6 +5772,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d9416b9a-5f5a-434c-bbcd-5dd86770a829",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -4044,6 +5861,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ddf14d75-31d9-4f8e-924e-9dc1a5a43250",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4094,6 +5942,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"Specified dataset 3022 does not belong to the study 3009\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4d2dd366-6236-4a2b-85a7-50a3e2c99757",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -4152,6 +6031,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7b18e5fe-bc72-48e4-b8f0-9c54b35fdc72",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4206,6 +6116,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e240aacd-7c9e-40d0-afc4-c7d96618db88",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4256,6 +6197,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f11ca8ce-69be-47a6-be51-e1f350bb24ce",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -4330,6 +6302,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0331c16a-0f37-4d69-928c-b7312cf1838c",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4389,6 +6392,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c16add58-352e-4c05-bc17-b9c895e1b0e9",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4444,6 +6478,37 @@
 											"pm.test(\"Check returned variable name\", function() {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData[0].name).to.equal(\"PLOT_NO\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a25631a2-c0f6-4986-98f2-49df54e929e4",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -4515,6 +6580,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0f143088-ee90-4a02-bbbc-1a8a2469f89c",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4574,6 +6670,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0656cc33-d5d3-470f-81b6-97d6e6f067ef",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4623,6 +6750,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "090307ac-448c-4cfc-893b-aa1697705699",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -4680,6 +6838,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "50a0ddf0-2f6b-469d-8fc1-edcab0b9f05e",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4729,6 +6918,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "56b4b2f5-a622-4bc4-b4db-55bc8542653d",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -4786,6 +7006,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1ef2576e-0492-4825-98f1-ef7da96aaadb",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4835,6 +7086,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "148e1b80-ee2e-401b-b700-8b9287320847",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -4898,6 +7180,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "930c6a21-00a3-4eec-b65c-eb6bfeee0e7d",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -4953,6 +7266,37 @@
 											"",
 											"pm.test(\"X-Total-Count is correct\", function () {",
 											"    pm.response.to.be.header(\"X-Total-Count\", \"0\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1b193140-07b9-4d5d-9d2c-769e6be06974",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5016,6 +7360,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6a662686-b9f4-4980-908f-d0f5df1ffe96",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5070,6 +7445,37 @@
 										"exec": [
 											"pm.test(\"Status code is 404\", function () {",
 											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7b48a69d-3d93-4327-a6f2-26dfc7c3118d",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5132,6 +7538,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d64f6e22-0d31-4654-af16-8af25ba7afac",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5186,6 +7623,37 @@
 										"exec": [
 											"pm.test(\"Status code is 500\", function () {",
 											"    pm.response.to.have.status(500);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bb290356-cb27-473c-bda3-faa5e9eed9af",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5248,6 +7716,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a2a3b9d3-a479-4ff8-aa3f-14a7a28952b1",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5304,6 +7803,37 @@
 											"    pm.response.to.have.status(500);",
 											"});",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f76ab43e-99bd-43ed-aa3c-d2bfa5a298dc",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -5374,6 +7904,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d0592711-bb36-4835-97ef-be3eb638d2f6",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5431,6 +7992,37 @@
 											"    pm.expect(jsonData.termId).to.equal(biomasId);",
 											"});",
 											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "77769718-bf98-47b7-b9a7-962c12ec1c2b",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -5500,6 +8092,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fca6161e-b673-4f34-828a-5e6689b793b0",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5560,6 +8183,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8e96f788-96ec-4ea0-8e7a-95c5df9b1572",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5614,6 +8268,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"Dataset is not a subobservation dataset.\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ebf54983-3cbe-43ec-8c8a-310361e140c6",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5676,6 +8361,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "181ba3ce-e903-4db0-b120-1f70e5dca380",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5730,6 +8446,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"Dataset does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1ebfcadc-da06-4857-8803-068470141b96",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5792,6 +8539,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8721c7d9-bd63-477f-8ca3-80b12c53cc89",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5846,6 +8624,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"Variable is not of given variable type.\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "25fd9514-6443-4ba0-95f2-b5a5a4d062b9",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5912,6 +8721,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "17282511-da5a-4826-b4b4-f0b33d59d869",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -5966,6 +8806,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"Variable type is not supported.\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fb07a0a4-0bb0-4748-9e5c-ad1da3da5d06",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6025,6 +8896,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.equal(\"Study is locked\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ac150c13-751b-4042-bbed-42eb671bfbd6",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"apitestuser\",",
+											"                \"password\": \"apitestuser\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"testuser_token\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6118,6 +9020,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "523073c0-5d5a-4a94-9554-bd9113ee8a45",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6173,6 +9106,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "64eeeba0-ef27-4ed7-b6ec-346ce7e634b9",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6236,6 +9200,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "de8863fa-4426-4328-87fc-85ed464f7912",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6291,6 +9286,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "65ac153d-a674-4e7b-a3b4-ea5bdf29a702",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6354,6 +9380,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b5d672c4-2df1-4a8a-8400-bfc7c5ca05e3",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6409,6 +9466,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e496e43e-1c3a-48f4-9db5-c84544cbce4e",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6472,6 +9560,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "61a5b2b1-3d96-40e3-aa1e-5ed0a61a8af5",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6531,6 +9650,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6d599adb-358c-49a4-9c88-ca967b5d7548",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6586,6 +9736,37 @@
 											"pm.test(\"Verify error message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid observation unit id.\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bd93d742-d118-4f7b-9b1d-5c7416770e6b",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6651,6 +9832,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "36facdeb-a11d-49dd-be61-831dfb6b63b9",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6701,6 +9913,37 @@
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "45b7d813-0eb3-4733-b9fd-2b20b905a404",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6759,6 +10002,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "521fbf74-7f74-43c5-b4f0-2b67868c3965",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6813,6 +10087,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1b5887ba-190e-4ec9-8eeb-842cc5b94f93",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6863,6 +10168,37 @@
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "546c3c89-49df-4bf9-b366-8968a620c514",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6925,6 +10261,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f81cc795-6da7-48ca-a69b-05db2c123d90",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -6979,6 +10346,37 @@
 											"pm.test(\"Verify response message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"Study does not exist\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c99aa307-6427-4157-a103-a5f19836010a",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -7041,6 +10439,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d2afa864-70ee-4f46-a218-0f94aa989c34",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -7095,6 +10524,37 @@
 											"pm.test(\"Verify response message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "88a113b3-5f49-43f2-bb0c-e1f655aa1c61",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -7157,6 +10617,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "954398a5-c438-46a3-b9b6-7ed3fe7bd9d2",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -7211,6 +10702,37 @@
 											"pm.test(\"Verify response message\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.errors[0].message).to.eql(\"For input string: \\\"asd\\\"\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4b24224f-79a8-4171-b284-3d7ac0b41be1",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
 											"});"
 										],
 										"type": "text/javascript"
@@ -7320,6 +10842,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c251659d-4dec-435c-8e95-ae3ec6a0098b",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -7397,6 +10950,37 @@
 									"",
 									"",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1d903a71-eebb-4567-8dc1-6c325372f19b",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -7480,6 +11064,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6da3e804-dac4-47c4-a35a-3f4887cacf1b",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -7556,6 +11171,37 @@
 									"pm.test(\"Check a listDetailsUrl\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData[0].listDetailsUrl).to.eql((pm.environment.get(\"BMSurl\"))+ (\"/germplasmList/\")+(pm.environment.get(\"crop\"))+\"/\"+(pm.environment.get(\"listId\")));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "479cc2bf-c01e-41ac-9232-70b8ee142e9f",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -7644,6 +11290,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "87683e24-e575-4f5c-98f4-12aed4d81469",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -7709,6 +11386,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5bb97748-6f47-4b29-b6ea-a8ea349c4b9b",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -7763,6 +11471,37 @@
 									"    }",
 									"});",
 									"*/"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f77c50b9-234f-4a05-ae92-dfdbf74bc7f9",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -7821,6 +11560,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b8f31ff2-9c0d-4796-a2cf-9d7a8b5fccf2",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -7871,6 +11641,37 @@
 									"pm.test(\"Verify returned error message\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.metadata.status[0].message).to.eql(\"not found sample\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a95a967c-5069-42b7-a8d2-1dee634f4ce1",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -7951,6 +11752,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bf22834f-c554-4156-9a11-82ed607a5aea",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -7995,6 +11827,37 @@
 								"exec": [
 									"pm.test(\"Status code is 500\", function () {",
 									"    pm.response.to.have.status(500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f8946b98-6222-4fcf-b668-01a9b3b41d9b",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -8068,6 +11931,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c63d983a-ffe3-473e-8f96-120040274df5",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -8120,6 +12014,37 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f190204f-9c0e-45fa-93b5-9d5c4da5c367",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -8195,6 +12120,37 @@
 									"});",
 									"",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5ea5e24e-b064-4c31-b481-a7d069c86a58",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -8277,6 +12233,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fe029234-7aee-4dc4-9436-5894e4a4d307",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -8334,6 +12321,37 @@
 									"    pm.expect(jsonData.metadata.status[0].message).to.eql(\"No inactive studies found.\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b966588b-728c-4f12-a8f3-53e94982c597",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -8412,6 +12430,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ff167e95-3cc7-4c56-a3f1-b8d8a8defdbd",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -8470,6 +12519,37 @@
 									"    pm.expect(jsonData.metadata.status[0].message).to.eql(\"sortBy bad filter, expect trialDbId/trialName/programDbId/programName/startDate/endDate/active\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "03863caa-ba25-4635-b524-06e037473173",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -8548,6 +12628,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "04cf85a2-b2dd-4812-8726-e087c9817656",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -8620,6 +12731,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1a9d05ba-c7e2-4cba-91cb-3c80f85fd3f4",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -8678,6 +12820,37 @@
 									"});\r",
 									"\r",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c1a4ec64-c9d8-496d-8533-c2f1183acefd",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -8802,6 +12975,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "68dd507b-6f75-4cd1-9a62-e861d797fe3c",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -8848,6 +13052,37 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "496544e7-ed9d-421f-a739-698b7031b7be",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -8936,6 +13171,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6d403d15-a074-41b6-978e-698066f95407",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -9005,6 +13271,37 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d3fd169e-3d29-4c07-a7c7-d8278e8d4c1a",
+										"exec": [
+											"pm.sendRequest({",
+											"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Content-Type': 'application/json'",
+											"    },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify(",
+											"            { ",
+											"                \"username\": \"admin\",",
+											"                \"password\": \"@dm1N\",",
+											"                \"grant_type\": \"\",",
+											"                \"client_id\": \"\"",
+											"            ",
+											"        })",
+											"    }",
+											"}, function (err, res) {",
+											"    var jsonData = res.json();",
+											"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -9062,6 +13359,37 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4ce67e04-b283-48dd-b15d-b789f0d1e537",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -9127,6 +13455,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c95beb22-b2e5-4873-94e3-c1cdd76ce7dd",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -9172,6 +13531,37 @@
 								"exec": [
 									"pm.test(\"Status code is 500\", function () {",
 									"    pm.response.to.have.status(500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0d87e66e-ff71-47b2-93c9-dbce919e2e0e",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -9231,6 +13621,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a8a4e83e-e25c-414c-983d-09d6f63dc8c1",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -9276,6 +13697,37 @@
 								"exec": [
 									"pm.test(\"Status code is 500\", function () {",
 									"    pm.response.to.have.status(500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ebfc37f1-a53f-40b2-8c24-069782a936bf",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
@@ -9397,6 +13849,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "89c7e15a-ed37-4152-8b83-aa187d60156e",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -9449,6 +13932,37 @@
 									"    pm.expect(pm.response.text()).to.include(\"year,studyDbId,studyName,locationDbId,locationName,germplasmDbId,germplasmName,observationUnitDbId,plotNumber,replicate,blockNumber,observationTimestamp,entryType,X,Y,obsUnitId,Grain_yield|18000,Biomas_yield|18010,Grain_size|18110\");",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b66d7072-c70c-433c-897f-2396c9537c31",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -9514,6 +14028,37 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "dcf51180-af34-4860-807d-2df33ae0748e",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -9565,6 +14110,37 @@
 									"pm.test(\"Check headers are correct\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"year\tstudyDbId\tstudyName\tlocationDbId\tlocationName\tgermplasmDbId\tgermplasmName\tobservationUnitDbId\tplotNumber\treplicate\tblockNumber\tobservationTimestamp\tentryType\tX\tY\tobsUnitId\tGrain_yield|18000\tBiomas_yield|18010\tGrain_size|18110\");",
 									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "66513bc9-97ea-4629-9342-266cf7d61451",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"BMSurl\")+\"/brapi/v1/token\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(",
+									"            { ",
+									"                \"username\": \"admin\",",
+									"                \"password\": \"@dm1N\",",
+									"                \"grant_type\": \"\",",
+									"                \"client_id\": \"\"",
+									"            ",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    var jsonData = res.json();",
+									"    pm.environment.set(\"masterToken\",jsonData.access_token);",
+									"",
 									"});"
 								],
 								"type": "text/javascript"
